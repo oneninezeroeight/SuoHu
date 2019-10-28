@@ -167,5 +167,6 @@ export default {
   border-bottom: 1px solid #e8e8e8;
   font-size: 0.4rem;
   justify-content: space-around;
+  align-items: center;
 }
 </style>
