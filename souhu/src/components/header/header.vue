@@ -60,11 +60,18 @@
             <div data-v-90fe0322 class="menu bicon-menu"></div>
           </div>
           <header class="v-tabs-title" style>
-            <router-link v-for="(item, index) in nav" :key="index" @click="highLight(index)">
+            <router-link
+              v-for="(item, index) in nav"
+              :key="index"
+              @click="highLight(index)"
+              :to="{
+                    name:item.url
+                  }"
+            >
               <div class="tab active" v-text="item.title"></div>
               <!-- <div class="tab">赛程</div>
               <div class="tab">排行</div>
-              <div class="tab">球员</div> -->
+              <div class="tab">球员</div>-->
             </router-link>
           </header>
         </div>
@@ -159,5 +166,6 @@ export default {
   background-color: #fff;
   border-bottom: 1px solid #e8e8e8;
   font-size: 0.4rem;
+  justify-content: space-around;
 }
 </style>
