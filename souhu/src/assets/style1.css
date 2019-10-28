@@ -1,0 +1,89 @@
+
+.ellipsis[data-v-90fe0322] {
+  line-height: 1.05em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.home-header[data-v-90fe0322] {
+  position: relative;
+  height: 1.173333rem;
+  line-height: 1.173333rem;
+  text-align: center;
+  background-color: #fff;
+  font-size: 0.453333rem;
+}
+.home-header .back[data-v-90fe0322] {
+  position: absolute;
+  font-size: 0.533333rem;
+  padding: 0.266667rem;
+  left: 0.133333rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.home-header .dsource-link[data-v-90fe0322] {
+  position: absolute;
+  top: 0;
+  right: 1.28rem;
+  height: 1.173333rem;
+  font-size: 0.266667rem;
+}
+.home-header .dsource-link .logo[data-v-90fe0322] {
+  height: 0.293333rem;
+  margin-top: 0.293333rem;
+}
+.home-header .dsource-link .tip[data-v-90fe0322] {
+  text-align: right;
+  color: #999;
+}
+.home-header .mode-switch[data-v-90fe0322] {
+  position: absolute;
+  font-size: 0.48rem;
+  padding: 0.266667rem;
+  right: 1.466667rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  cursor: pointer;
+}
+.home-header .menu[data-v-90fe0322] {
+  position: absolute;
+  font-size: 0.48rem;
+  padding: 0.266667rem;
+  right: 0.133333rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  cursor: pointer;
+}
+.home-header .content[data-v-90fe0322] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 0.213333rem;
+}
+.home-header .content .logo[data-v-90fe0322] {
+  width: 0.8rem;
+  height: 0.8rem;
+  background-size: 1.333333rem 0.666667rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.home-header .content .main[data-v-90fe0322] {
+  margin-left: 0.133333rem;
+}
+.home-header .content .main .name[data-v-90fe0322] {
+  font-size: 0.453333rem;
+}
+.home-header .content .main .read[data-v-90fe0322] {
+  padding-top: 0.106667rem;
+  font-size: 0.266667rem;
+  color: #999;
+}
