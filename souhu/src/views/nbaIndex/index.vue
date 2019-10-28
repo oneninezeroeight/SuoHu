@@ -360,4 +360,98 @@ export default {
   font-size: 0.48rem;
   font-weight: bold;
 }
+.nba-home-page .feed-item:first-of-type {
+  border-top: none;
+}
+.nba-home-page .feed-item {
+  border-top: 0.013333rem solid #e8e8e8;
+  margin: -0.026667rem 0.346667rem;
+}
+.feed-item {
+  position: relative;
+  margin: 0 0.346667rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+.feed-item .onePic {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 0.226667rem;
+  padding-bottom: 0.226667rem;
+}
+.feed-item .onePic .onePic_detail {
+  position: relative;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.feed-item .onePic .onePic_detail .title {
+    padding-right: 0.266667rem;
+    -webkit-line-clamp: 3;
+}
+.feed-item .title {
+    line-height: 1.175em;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    display: box;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    font-size: 18px;
+    line-height: 1.4em;
+    color: #212121;
+}
+.feed-item .onePic .onePic_detail .item_info {
+    padding-top: 0.226667rem;
+    padding-bottom: 0.093333rem;
+}
+.feed-item .item_info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    overflow: hidden;
+    color: #999;
+    font-size: 0.32rem;
+    width: 100%;
+    padding-right: 0.266667rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.feed-item .item_info .name {
+    line-height: 1.05em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+    max-width: 10em;
+}
+.feed-item .item_info .time {
+    float: left;
+    position: relative;
+    line-height: 1.05em;
+    padding-left: 0.16rem;
+}
+.feed-item .onePic .onePic_img {
+    position: relative;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    width: 3.04rem;
+    height: 1.973333rem;
+    background-size: cover;
+}
 </style>
