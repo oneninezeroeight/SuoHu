@@ -2,7 +2,7 @@
   <div>
     <div class="nba-home-page">
       <div class="v-tabs-wrap" activecolor="#FFB244">
-        <Header></Header>
+        <Header :offset=0></Header>
         <div class="content-wrap">
           <div class="content" style="transform: translateX(0%) translateZ(0px);">
             <div class="v-tab-pane">

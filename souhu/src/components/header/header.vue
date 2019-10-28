@@ -79,7 +79,11 @@
   </div>
 </template>
 <script>
+// import observer from "../../tools/observer";
 export default {
+  props: {
+    offset: Number
+  },
   data() {
     return {
       nav: [
@@ -99,19 +103,12 @@ export default {
           title: "球员",
           url: "nbaplayer"
         }
-      ],
+      ]
       // 控制高亮
-      offset: 0
+      // offset: 0
     };
   },
-  methods: {
-    highLight(index) {
-      this.offset = index;
-      // 传递tabbar选项卡的索引值
-      observer.emit("setTabbar", index);
-      // console.log(index)
-    }
-  }
+  methods: {}
 };
 </script>
 <style scoped>
@@ -177,5 +174,21 @@ export default {
   font-size: 0.4rem;
   justify-content: space-around;
   align-items: center;
+}
+.v-tabs-wrap .v-tabs-title .tab.active {
+  color: #ffb244;
+  font-weight: 700;
+}
+.v-tabs-wrap .v-tabs-title .tab.active:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 0.533333rem;
+  height: 0.08rem;
+  border-radius: 0.04rem;
+  background-color: #ffb244;
 }
 </style>

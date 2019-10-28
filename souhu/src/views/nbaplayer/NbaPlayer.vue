@@ -1,6 +1,8 @@
 <template name="component-name">
     <div>
-        <Header></Header>
+      <div class="v-tabs-wrap" activecolor="#FFB244">
+        <Header :offset=3></Header>
+        </div>
     </div>
 </template>
 <script>
