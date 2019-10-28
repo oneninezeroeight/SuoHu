@@ -26,12 +26,6 @@
             </div>
             <div data-v-90fe0322 class="menu bicon-menu"></div>
           </div>
-          <header class="v-tabs-title" style>
-            <div class="tab active">要闻</div>
-            <div class="tab">赛程</div>
-            <div class="tab">排行</div>
-            <div class="tab">球员</div>
-          </header>
         </div>
       </div>
       <div class="content origin">
@@ -68,7 +62,12 @@
                     name:item.url
                   }"
             >
-              <div class="tab active" v-text="item.title"></div>
+              <div
+                v-text="item.title"
+                :class="['tab',{
+                          'active': offset === index
+                      }]"
+              ></div>
               <!-- <div class="tab">赛程</div>
               <div class="tab">排行</div>
               <div class="tab">球员</div>-->
@@ -100,8 +99,18 @@ export default {
           title: "球员",
           url: "nbaplayer"
         }
-      ]
+      ],
+      // 控制高亮
+      offset: 0
     };
+  },
+  methods: {
+    highLight(index) {
+      this.offset = index;
+      // 传递tabbar选项卡的索引值
+      observer.emit("setTabbar", index);
+      // console.log(index)
+    }
   }
 };
 </script>
