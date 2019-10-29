@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var SportLeague = require('./routes/Sport-League')
 var NBAteams = require('./routes/NBA-teams')
+var NBASy = require('./routes/NBA-index')
 
 var app = express();
 
@@ -17,7 +18,9 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use((req, res, next) => {
   // 允许所有请求跨域，所有请求的响应头部分都带上cors
@@ -30,6 +33,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/SportLeague', SportLeague);
 app.use('/NBAteams', NBAteams);
+app.use('/NBASy', NBASy);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
