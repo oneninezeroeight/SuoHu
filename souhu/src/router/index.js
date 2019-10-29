@@ -5,25 +5,25 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/',
-    name: 'nbayw',
-    component: () => import('../views/nbaIndex/index.vue')
-  },
-  {
-    path: '/nbasc',
-    name: 'nbasc',
-    component: () => import('../views/nbasc/NbaSc.vue')
-  },
-  {
-    path: '/nbaph',
-    name: 'nbaph',
-    component: () => import('../views/nbaph/NbaPh.vue')
-  },
-  {
-    path: '/nbaplayer',
-    name: 'nbaplayer',
-    component: () => import('../views/nbaplayer/NbaPlayer.vue')
-  },
+  path: '/',
+  name: 'nbayw',
+  component: () => import('../views/nbaIndex/index.vue')
+},
+{
+  path: '/nbasc',
+  name: 'nbasc',
+  component: () => import('../views/nbasc/NbaSc.vue')
+},
+{
+  path: '/nbaph',
+  name: 'nbaph',
+  component: () => import('../views/nbaph/NbaPh.vue')
+},
+{
+  path: '/nbaplayer',
+  name: 'nbaplayer',
+  component: () => import('../views/nbaplayer/NbaPlayer.vue')
+},
   // {
   //   path: '/detail/:id',
   //   name: 'detail',

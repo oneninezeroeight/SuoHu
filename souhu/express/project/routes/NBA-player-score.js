@@ -5,14 +5,14 @@ const {
 } = require('../mongo/db')
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
-    let news = await find('NBA-teams')
+    let news = await find('NBA-player-score')
     news = news.sort((a, b) => {
-        return a._id * 1 - b._id * 1;
+        return a.ranking * 1 - b.ranking * 1;
     })
     res.json({
         news
     });
-    // console.log(news)
+    console.log(news)
     // res.send(' with a resource');
 });
 

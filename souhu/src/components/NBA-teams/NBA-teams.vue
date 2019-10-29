@@ -47,11 +47,7 @@ export default {
       (async () => {
         let { news } = (await axios.get("http://localhost:3000/NBAteams")).data;
         this.news = news;
-        // await $(".oper header").click();
       })();
-    },
-    click() {
-      $(".oper header").click();
     },
     show() {
       this.isFocus = !this.isFocus;
