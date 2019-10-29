@@ -19,13 +19,34 @@
         </div>
       </div>
     </div>
+    <Goal></Goal>
+    <BackBoard></BackBoard>
+    <Assist></Assist>
+    <Steal></Steal>
+    <BlockShot></BlockShot>
+    <Fault></Fault>
+    <Foul></Foul>
   </div>
 </template>
 <script>
 import Header from "../../components/header/header.vue";
+import Goal from "../../components/player/goal.vue";
+import BackBoard from "../../components/player/backboard.vue";
+import Assist from "../../components/player/assist.vue";
+import Steal from "../../components/player/steal.vue";
+import BlockShot from "../../components/player/blockShot.vue";
+import Fault from "../../components/player/fault.vue";
+import Foul from "../../components/player/foul.vue";
 export default {
   components: {
-    Header
+    Header,
+    Goal,
+    BackBoard,
+    Assist,
+    Steal,
+    BlockShot,
+    Fault,
+    Foul
   }
 };
 </script>
