@@ -81,7 +81,7 @@
                     </a>
                   </div>
                 </div>
-                <div data-spm="rec-list" class="columns-wrap">
+                <!-- <div data-spm="rec-list" class="columns-wrap">
                   <div class="navs fold">
                     <a
                       href="http://m.sohu.com/media/458722?spm=smwp.fb-nba-home.rec-list.1.1572235353618kHDzu7P"
@@ -172,7 +172,10 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div>-->
+                <keep-alive>
+                  <NBAteams></NBAteams>
+                </keep-alive>
                 <div class="news-list-wrap">
                   <div>
                     <div data-spm="fd-d" class="feed-list-wrap">
@@ -223,13 +226,20 @@
         </div>
       </div>
     </div>
+    <keep-alive>
+      <SportLeague style="display:none" />
+    </keep-alive>
   </div>
 </template>
 <script>
 import Header from "../../components/header/header.vue";
+import NBAteams from "../../../src/components/NBA-teams/NBA-teams.vue";
+import SportLeague from "../../components/Sport-League/Sport-League.vue";
 export default {
   components: {
-    Header
+    Header,
+    NBAteams,
+    SportLeague
   }
 };
 </script>
@@ -397,61 +407,61 @@ export default {
   justify-content: space-between;
 }
 .feed-item .onePic .onePic_detail .title {
-    padding-right: 0.266667rem;
-    -webkit-line-clamp: 3;
+  padding-right: 0.266667rem;
+  -webkit-line-clamp: 3;
 }
 .feed-item .title {
-    line-height: 1.175em;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    display: box;
-    word-break: break-all;
-    -webkit-box-orient: vertical;
-    font-size: 18px;
-    line-height: 1.4em;
-    color: #212121;
+  line-height: 1.175em;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  display: box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  font-size: 18px;
+  line-height: 1.4em;
+  color: #212121;
 }
 .feed-item .onePic .onePic_detail .item_info {
-    padding-top: 0.226667rem;
-    padding-bottom: 0.093333rem;
+  padding-top: 0.226667rem;
+  padding-bottom: 0.093333rem;
 }
 .feed-item .item_info {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    overflow: hidden;
-    color: #999;
-    font-size: 0.32rem;
-    width: 100%;
-    padding-right: 0.266667rem;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  color: #999;
+  font-size: 0.32rem;
+  width: 100%;
+  padding-right: 0.266667rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .feed-item .item_info .name {
-    line-height: 1.05em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    float: left;
-    max-width: 10em;
+  line-height: 1.05em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+  max-width: 10em;
 }
 .feed-item .item_info .time {
-    float: left;
-    position: relative;
-    line-height: 1.05em;
-    padding-left: 0.16rem;
+  float: left;
+  position: relative;
+  line-height: 1.05em;
+  padding-left: 0.16rem;
 }
 .feed-item .onePic .onePic_img {
-    position: relative;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    width: 3.04rem;
-    height: 1.973333rem;
-    background-size: cover;
+  position: relative;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 3.04rem;
+  height: 1.973333rem;
+  background-size: cover;
 }
 </style>

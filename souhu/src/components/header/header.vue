@@ -51,7 +51,7 @@
                 <div data-v-90fe0322 class="name">NBA</div>
               </div>
             </div>
-            <div data-v-90fe0322 class="menu bicon-menu"></div>
+            <div data-v-90fe0322 class="menu bicon-menu" @click="click"></div>
           </div>
           <header class="v-tabs-title" style>
             <router-link
@@ -68,19 +68,24 @@
                           'active': offset === index
                       }]"
               ></div>
-              <!-- <div class="tab">赛程</div>
-              <div class="tab">排行</div>
-              <div class="tab">球员</div>-->
             </router-link>
           </header>
         </div>
       </div>
     </div>
+    <keep-alive>
+      <SportLeague id="show" style="display:none" />
+    </keep-alive>
   </div>
 </template>
 <script>
 // import observer from "../../tools/observer";
+import $ from "jquery";
+import SportLeague from "../Sport-League/Sport-League.vue";
 export default {
+  components: {
+    SportLeague
+  },
   props: {
     offset: Number
   },
@@ -108,7 +113,11 @@ export default {
       // offset: 0
     };
   },
-  methods: {}
+  methods: {
+    click() {
+      $("#show")[0].style.display = "block";
+    }
+  }
 };
 </script>
 <style scoped>
