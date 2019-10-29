@@ -120,7 +120,7 @@
                                   class="onePic_img"
                                   :data-src="item.images"
                                   lazy="loaded"
-                                  s v-bind:style="{backgroundImage: 'url('+item.images+')'}"
+                                  v-bind:style="{backgroundImage: 'url('+item.images+')'}"
                                 ></div>
                               </a>
                             </li>
@@ -157,7 +157,6 @@ export default {
       (async () => {
         let { news } = (await axios.get("http://localhost:3000/NBASy")).data;
         this.news = news;
-        console.log(this.news);
       })();
     }
   },

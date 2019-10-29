@@ -13,21 +13,22 @@
           href="http://m.sohu.com/z/nba/match/2019102825?spm=smwp.fb-nba-home.ml.1.15722605963069pAM8o1"
           data-spm-data="1"
         >
-          <div data-v-5fc8a3bc class="item">
+        
+          <div data-v-5fc8a3bc class="item" v-for="(item,index) in news" :key="index">
             <div data-v-5fc8a3bc class="nation host">
               <div
                 data-v-5fc8a3bc
                 class="flag"
                 lazy-progressive="true"
-                data-src="//statics.itc.cn/sports/basketball/NBA/teamicon/9.png"
+                :data-src="item.homeTeamLogo"
                 lazy="loaded"
-                style="background-image: url(&quot;//statics.itc.cn/sports/basketball/NBA/teamicon/9.png&quot;);"
+                v-bind:style="{backgroundImage: 'url('+item.homeTeamLogo+')'}"
               ></div>
-              <div data-v-5fc8a3bc class="name">勇士</div>
+              <div data-v-5fc8a3bc class="name">{{item.homeTeam}}</div>
             </div>
             <div data-v-5fc8a3bc class="detail">
               <header data-v-5fc8a3bc class="title">NBA常规赛</header>
-              <div data-v-5fc8a3bc class="progress">92 - 120</div>
+              <div data-v-5fc8a3bc class="progress">{{item.homeTeamScore}} - {{item.vsTeamScore}}</div>
               <footer data-v-5fc8a3bc class="status end">已结束</footer>
             </div>
             <div data-v-5fc8a3bc class="nation visitor">
@@ -35,13 +36,14 @@
                 data-v-5fc8a3bc
                 class="flag"
                 lazy-progressive="true"
-                data-src="//statics.itc.cn/sports/basketball/NBA/teamicon/25.png"
+                :data-src="item.vsTeamLogo"
                 lazy="loaded"
-                style="background-image: url(&quot;//statics.itc.cn/sports/basketball/NBA/teamicon/25.png&quot;);"
+                v-bind:style="{backgroundImage: 'url('+item.vsTeamLogo+')'}"
               ></div>
-              <div data-v-5fc8a3bc class="name">雷霆</div>
+              <div data-v-5fc8a3bc class="name">{{item.vsTeam}}</div>
             </div>
           </div>
+          
         </a>
       </div>
     </div>
@@ -49,7 +51,24 @@
 </template>
 <script>
 import Header from "../../components/header/header.vue";
+import axios from "axios";
 export default {
+  data() {
+    return {
+      news: []
+    };
+  },
+  methods: {
+    getNews() {
+      (async () => {
+        let { news } = (await axios.get("http://localhost:3000/NBASc")).data;
+        this.news = news;
+      })();
+    }
+  },
+  mounted() {
+    this.getNews();
+  },
   components: {
     Header
   }
@@ -119,59 +138,65 @@ export default {
   font-size: 0.32rem;
 }
 .relate-match-item .item .nation {
-    width: 2.666667rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+  width: 2.666667rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .relate-match-item .item .nation .flag {
-    position: relative;
-    margin: 0 auto;
-    width: 2rem;
-    height: 1.333333rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+  position: relative;
+  margin: 0 auto;
+  width: 2rem;
+  height: 1.333333rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .relate-match-item .item .nation .name {
-    font-size: 0.4rem;
-    text-align: center;
-    padding-top: 0.266667rem;
+  font-size: 0.4rem;
+  text-align: center;
+  padding-top: 0.266667rem;
 }
 .relate-match-item .item .detail .title {
-    padding-bottom: 0.346667rem;
-    font-size: 0.32rem;
-    line-height: 0.426667rem;
-    color: #888888;
-    text-align: center;
+  padding-bottom: 0.346667rem;
+  font-size: 0.32rem;
+  line-height: 0.426667rem;
+  color: #888888;
+  text-align: center;
 }
 .relate-match-item .item .detail .progress[data-v-5fc8a3bc] {
-    margin-bottom: 0.346667rem;
-    font-size: 0.506667rem;
-    color: #121212;
-    text-align: center;
+  margin-bottom: 0.346667rem;
+  font-size: 0.506667rem;
+  color: #121212;
+  text-align: center;
 }
 .relate-match-item .item .detail .status.end {
-    background: -webkit-gradient(linear, left top, right top, from(#BDBDBD), to(#484848));
-    background: linear-gradient(to right, #BDBDBD, #484848);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#bdbdbd),
+    to(#484848)
+  );
+  background: linear-gradient(to right, #bdbdbd, #484848);
 }
 .relate-match-item .item .detail .status {
-    width: 1.92rem;
-    height: 0.426667rem;
-    margin: 0 auto;
-    line-height: 0.426667rem;
-    border-radius: 0.213333rem;
-    text-align: center;
-    color: #fff;
-    font-size: 12px;
+  width: 1.92rem;
+  height: 0.426667rem;
+  margin: 0 auto;
+  line-height: 0.426667rem;
+  border-radius: 0.213333rem;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
 }
 </style>

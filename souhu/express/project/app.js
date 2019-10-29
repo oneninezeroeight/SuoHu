@@ -6,9 +6,12 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var SportLeague = require('./routes/Sport-League')
-var NBAteams = require('./routes/NBA-teams')
-var NBASy = require('./routes/NBA-index')
+var SportLeague = require('./routes/Sport-League');
+var NBAteams = require('./routes/NBA-teams');
+var NBASy = require('./routes/NBA-index');
+var NBASc = require('./routes/NBA-sc');
+var NBAXblm = require('./routes/NBA-xb');
+var NBADblm = require('./routes/NBA-db')
 
 var app = express();
 
@@ -34,6 +37,9 @@ app.use('/users', usersRouter);
 app.use('/SportLeague', SportLeague);
 app.use('/NBAteams', NBAteams);
 app.use('/NBASy', NBASy);
+app.use('/NBASc', NBASc);
+app.use('/NBAXblm', NBAXblm);
+app.use('/NBADblm', NBADblm);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
