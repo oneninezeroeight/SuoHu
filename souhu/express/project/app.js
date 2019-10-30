@@ -6,6 +6,18 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var SportLeague = require('./routes/Sport-League')
+var NBAteams = require('./routes/NBA-teams')
+var NBAplayerbackboard = require('./routes/NBA-player-backboard')
+var NNBAplayerassists = require('./routes/NBA-player-assists')
+var NBAplayerblocks = require('./routes/NBA-player-blocks')
+var NNBAplayerfouls = require('./routes/NBA-player-fouls')
+var NBAplayersteals = require('./routes/NBA-player-steals')
+var NBAplayerturnovers = require('./routes/NBA-player-turnovers')
+var NBAplayerscore = require('./routes/NBA-player-score')
+
+
+
 var SportLeague = require('./routes/Sport-League');
 var NBAteams = require('./routes/NBA-teams');
 var NBASy = require('./routes/NBA-index');
@@ -36,6 +48,17 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/SportLeague', SportLeague);
 app.use('/NBAteams', NBAteams);
+app.use('/NBAplayerbackboard', NBAplayerbackboard);
+app.use('/NBAplayerscore', NBAplayerscore);
+app.use('/NBAplayerassists', NNBAplayerassists);
+app.use('/NBAplayerblocks', NBAplayerblocks);
+app.use('/NNBAplayerfouls', NNBAplayerfouls);
+app.use('/NBAplayersteals', NBAplayersteals);
+app.use('/NBAplayerturnovers', NBAplayerturnovers);
+
+
+
+
 app.use('/NBASy', NBASy);
 app.use('/NBASc', NBASc);
 app.use('/NBAXblm', NBAXblm);

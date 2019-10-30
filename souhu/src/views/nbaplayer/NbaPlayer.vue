@@ -4,6 +4,19 @@
       <Header :offset="3"></Header>
       <div data-v-58cb0d1e class="item-title">
         <section data-v-58cb0d1e class="tabs">
+          <!-- <div
+            v-for="(item,index) in nav"
+            :key="index"
+            data-v-58cb0d1e
+            :class="['tab',{
+        'active' :offsetx === index
+      }]"
+            @click="highLight(index)"
+            :to="{
+        name:item.url
+      }"
+            v-text="item.title"
+          ></div>-->
           <div data-v-58cb0d1e class="tab active">得分</div>
           <div data-v-58cb0d1e class="tab">篮板</div>
           <div data-v-58cb0d1e class="tab">助攻</div>
@@ -18,35 +31,94 @@
           <div data-v-58cb0d1e class="goals">数据</div>
         </div>
       </div>
+      <div data-v-58cb0d1e class="player-ranks-wrap">
+        <div data-v-58cb0d1e class="req-wrap">
+          <div data-v-58cb0d1e class="player-list">
+            <a
+              data-v-58cb0d1e
+              href="http://nbadata.m.sohu.com/nba/player.php?id=4840"
+              class="player-link data"
+              v-for="(item,index) in news"
+              :key="index"
+            >
+              <div data-v-58cb0d1e class="item player">
+                <div data-v-58cb0d1e class="player">
+                  <div data-v-58cb0d1e class="rank" v-text="item.ranking"></div>
+                  <div data-v-58cb0d1e class="name" v-text="item.playerName"></div>
+                </div>
+                <div data-v-58cb0d1e class="team" v-text="item.teamName"></div>
+                <div data-v-58cb0d1e class="goals" v-text="item.score"></div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <Goal></Goal>
-    <BackBoard></BackBoard>
-    <Assist></Assist>
-    <Steal></Steal>
-    <BlockShot></BlockShot>
-    <Fault></Fault>
-    <Foul></Foul>
   </div>
 </template>
 <script>
 import Header from "../../components/header/header.vue";
-import Goal from "../../components/player/goal.vue";
-import BackBoard from "../../components/player/backboard.vue";
-import Assist from "../../components/player/assist.vue";
-import Steal from "../../components/player/steal.vue";
-import BlockShot from "../../components/player/blockShot.vue";
-import Fault from "../../components/player/fault.vue";
-import Foul from "../../components/player/foul.vue";
+import axios from "axios";
+// import $ from "jquery";
 export default {
+  props: {
+    offsetx: Number
+  },
+  data() {
+    return {
+      // offsetx: 0,
+      news: [],
+      nav: [
+        {
+          title: "得分",
+          url: "score"
+        },
+        {
+          title: "篮板",
+          url: "backboard"
+        },
+        {
+          title: "助攻",
+          url: "assists"
+        },
+        {
+          title: "抢断",
+          url: "steals"
+        },
+        {
+          title: "盖帽",
+          url: "blocks"
+        },
+        {
+          title: "失误",
+          url: "turnovers"
+        },
+        {
+          title: "犯规",
+          url: "fouls"
+        }
+      ]
+    };
+  },
+  methods: {
+    highLight(index) {
+      this.offsetx = index;
+      console.log(this.offsetx);
+    },
+    getNews() {
+      (async () => {
+        let { news } = (await axios.get(
+          "http://localhost:3000/NBAplayerscore"
+        )).data;
+        this.news = news;
+      })();
+    }
+  },
   components: {
-    Header,
-    Goal,
-    BackBoard,
-    Assist,
-    Steal,
-    BlockShot,
-    Fault,
-    Foul
+    Header
+  },
+  mounted() {
+    this.getNews();
   }
 };
 </script>
@@ -105,26 +177,26 @@ export default {
   color: #888888;
 }
 .item-title .titles .player {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 3.733333rem;
-    flex: 1 1 3.733333rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 3.733333rem;
+  flex: 1 1 3.733333rem;
 }
 .item-title .titles .team {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 2.133333rem;
-    flex: 1 1 2.133333rem;
-    text-align: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 2.133333rem;
+  flex: 1 1 2.133333rem;
+  text-align: center;
 }
 .item-title .titles .goals {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 1.066667rem;
-    flex: 0 0 1.066667rem;
-    text-align: center;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 1.066667rem;
+  flex: 0 0 1.066667rem;
+  text-align: center;
 }
 </style>

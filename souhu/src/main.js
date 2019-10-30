@@ -8,6 +8,7 @@ import './assets/style2.css'
 import './assets/NBA-teams.css'
 import './assets/NBA-teams3.css'
 import './assets/Sport-League.css'
+import './assets/NBAplayer.css'
 Vue.config.productionTip = false
 
 new Vue({

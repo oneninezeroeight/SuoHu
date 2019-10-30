@@ -108,9 +108,9 @@ export default {
           title: "球员",
           url: "nbaplayer"
         }
-      ]
+      ],
       // 控制高亮
-      // offset: 0
+      offseta: 0
     };
   },
   methods: {
