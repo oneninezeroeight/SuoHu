@@ -15,7 +15,7 @@ const routes = [{
   component: () => import('../views/nbasc/NbaSc.vue')
 },
 {
-  path: '/nbaph  ',
+  path: '/  ',
   name: 'nbaph',
   component: () => import('../views/nbaph/NbaPh.vue')
 },
@@ -29,27 +29,6 @@ const routes = [{
   name: 'sporthome',
   component: () => import('../views/SportNews/SportNews.vue')
 },
-
-{
-  path: '/login',
-  name: 'login',
-  component: () => import('../views/login/login.vue')
-},
-{
-  path: '/login2',
-  name: 'login2',
-  component: () => import('../views/login/login2.vue')
-},
-{
-  path: '/zc',
-  name: 'zc',
-  component: () => import('../views/login/zc.vue')
-},
-  // {
-  //   path: '/detail/:id',
-  //   name: 'detail',
-  //   component: () => import('../views/detail/detail.vue')
-  // }
 ]
 
 const router = new VueRouter({
