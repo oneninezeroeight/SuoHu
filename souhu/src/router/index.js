@@ -24,6 +24,11 @@ const routes = [{
     name: 'nbaplayer',
     component: () => import('../views/nbaplayer/NbaPlayer.vue')
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/login/login.vue')
+  },
   // {
   //   path: '/detail/:id',
   //   name: 'detail',
