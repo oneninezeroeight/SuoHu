@@ -29,6 +29,16 @@ const routes = [{
     name: 'login',
     component: () => import('../views/login/login.vue')
   },
+  {
+    path: '/login2',
+    name: 'login2',
+    component: () => import('../views/login/login2.vue')
+  },
+  {
+    path: '/zc',
+    name: 'zc',
+    component: () => import('../views/login/zc.vue')
+  },
   // {
   //   path: '/detail/:id',
   //   name: 'detail',

@@ -21,6 +21,6 @@
 
 <style>
 html{
-  font-size: 37.52px
+  font-size: 37.52px !important
 }
 </style>

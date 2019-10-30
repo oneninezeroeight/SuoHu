@@ -1,14 +1,14 @@
 <template>
   <div data-v-617ab0be class="login-page-wrapper">
     <div data-v-ef68022e data-v-617ab0be class="login-box-wrapper">
-      <div data-v-ef68022e data-spm="phone-login" class="forSpm" style="display: none;">
+      <div data-v-ef68022e data-spm="phone-login" class="forSpm" style>
         <a
           data-v-ef68022e
           href="https://m.sohu.com/login?appid=116006&amp;r=https%3A%2F%2Fm.sohu.com%2Fucenter%3Fspm%3Dsmwp.home.hdn.4.1572398295744rOOombb&amp;spm=smwp.login.phone-login.1.1572398299383zOoIJQG"
           data-spm-data="1"
         ></a>
       </div>
-      <div data-v-ef68022e data-spm="passport-login" class="forSpm" style>
+      <div data-v-ef68022e data-spm="passport-login" class="forSpm" style="display: none;">
         <a
           data-v-ef68022e
           href="https://m.sohu.com/login?appid=116006&amp;r=https%3A%2F%2Fm.sohu.com%2Fucenter%3Fspm%3Dsmwp.home.hdn.4.1572398295744rOOombb&amp;spm=smwp.login.passport-login.1.1572398299383zOoIJQG"
@@ -17,7 +17,7 @@
       </div>
       <!---->
       <div data-v-d0c93148 data-v-ef68022e class="alert-shadow" style="display: none;">
-        <div data-v-d0c93148 class="alert-content">提示文字提示文字</div>
+        <div data-v-d0c93148 class="alert-content">用户名或密码错误</div>
       </div>
       <!---->
       <div data-v-61dd7a3d data-v-ef68022e class="header-wrapper">
@@ -28,7 +28,7 @@
           class="logo-img"
         />
       </div>
-      <header data-v-ef68022e class="box-title">账号密码登录</header>
+      <header data-v-ef68022e class="box-title">手机号登录注册</header>
       <div data-v-ef68022e class="passport-box input-box">
         <div data-v-ef68022e class="passport-content content">
           <van-field
@@ -39,32 +39,30 @@
             placeholder="请输入账号"
             v-model="userName"
             :error-message="usertel"
-            
           />
-          <div data-v-ef68022e class="send-code" style="display: none;">获取验证码</div>
+          <van-button
+            data-v-ef68022e
+            class="send-code active"
+            style
+            @click="sendCode"
+          >{{ buttonmsg }}</van-button>
         </div>
-        <!-- <div data-v-ef68022e class="note" style>请输入账号</div> -->
+        <!-- <div data-v-ef68022e class="note" style>请输入手机号</div> -->
       </div>
       <div data-v-ef68022e class="password-box input-box">
         <div data-v-ef68022e class="password-content content">
           <van-field
             data-v-ef68022e
             autocomplete="off"
-            :type="type"
+            type="tel"
             class="password"
-            placeholder="请输入密码"
-            v-model="password"
-            :error-message="pass"
-            
+            placeholder="请输入验证码"
+            v-model="sms"
+            :error-message="test"
           />
-          <i
-            data-v-ef68022e
-            @click="changeeye"
-            :class="['icon i-close-eye',{'icon i-view':ischange}]"
-            style
-          ></i>
+          <i data-v-ef68022e class="icon i-view" style="display: none;"></i>
         </div>
-        <!-- <div data-v-ef68022e class="note">请输入密码</div> -->
+        <!-- <div data-v-ef68022e class="note" style>请输入验证码</div> -->
       </div>
       <!---->
       <div data-v-ef68022e class="should-know">
@@ -86,19 +84,14 @@
           >手机搜狐隐私政策</a>
         </span>
       </div>
-      <van-button
+      <div
         data-v-ef68022e
         :class="['start-use',{'start-use active':isFocus}]"
-        type="primary"
-        :loading="loading"
-        loading-text="登录..."
-        :disabled="zhud"
-        size="large"
-        @click="login"
-      >开始使用</van-button>
+        @click="register"
+      >开始使用</div>
       <div data-v-ef68022e data-spm="method" class="switch-and-forget">
         <div data-v-ef68022e class="switch-method">
-          <i data-v-ef68022e class="icon i-switch" @click="toRegister"></i>手机号登录注册
+          <i data-v-ef68022e class="icon i-switch" @click="toLogin"></i>账号密码登录
         </div>
         <a
           data-v-ef68022e
@@ -107,7 +100,7 @@
           data-spm-acode="8648"
           class="forget-password"
           data-spm-data="1"
-          style
+          style="display: none;"
         >忘记密码</a>
       </div>
       <div data-v-ef68022e data-spm="third-login" class="third-method">
@@ -138,70 +131,11 @@ Vue.use(Divider);
 export default {
   data() {
     return {
-      isFocus: 0,
       userName: "",
-      password: "",
-      loading: false,
-      ischange: 0,
-      type:"password",
-      zhud:false,
+      sms: "",
+      isFocus: 0,
+      buttonmsg: "获取验证码"
     };
-  },
-  methods: {
-    changeeye() {
-      this.ischange = !this.ischange;
-      if(this.type==="password"){
-          this.type="text"
-      }else if(this.type==="text"){
-          this.type="password"
-      }
-    },
-    changecheck() {
-      this.isFocus = !this.isFocus;
-
-    },
-    toRegister() {
-      this.$router.replace("");
-    },
-    login() {
-      if (this.tel === "" || this.usertel === "手机号码格式错误") {
-        Toast("手机号码输入有误");
-        return;
-      }
-      if (this.password === "" || this.pass === "密码格式错误，最少为6位") {
-        Toast("密码输入有误");
-        return;
-      }
-      //   if (this.sms === "" || this.sms !== this.adminCode) {
-      //     Toast("验证码输入有误");
-      //     return;
-      //   }
-      this.reallR();
-    },
-    reallR() {
-      this.loading = true;
-      this.zhud=true
-      axios
-        .post("", {
-          username: this.tel,
-          password: this.password
-        })
-        .then(res => {
-          this.zhud = false;
-          this.loading = false;
-          if (res.data === 2) {
-            Toast("用户未注册");
-          } else if (res.data === -1) {
-            Toast("密码错误");
-          } else if (res.data === 0) {
-            Toast("登录失败");
-          } else {
-            Toast("登录成功");
-            localStorage.setItem("isLogin", "ok"); //登录标识
-            // this.$router.back()  //登陆成功返回上一页
-          }
-        });
-    }
   },
   computed: {
     usertel() {
@@ -213,17 +147,87 @@ export default {
         return "";
       }
     },
-    pass() {
-      if (this.password === "") {
+    test() {
+      if (this.sms === "") {
         return "";
-      } else if (this.password.length < 6) {
-        return "密码不可小于6位";
+      } else if (this.sms.length !== 5) {
+        return "验证码格式错误";
       } else {
         return "";
       }
     }
   },
-  mounted() {}
+  methods: {
+    changecheck() {
+      this.isFocus = !this.isFocus;
+    },
+    toLogin() {
+      this.$router.replace("");
+    },
+    sendCode() {
+      let time = 4;
+      let timer;
+      timer = setInterval(() => {
+        time--;
+        if (time === 0) {
+          clearInterval(timer);
+          this.flag = false;
+          this.buttonmsg = "点击发送验证码";
+          return;
+        }
+        this.flag = true;
+        this.buttonmsg = time + "秒后重新发送";
+      }, 1000);
+      this.getCode();
+      console.log(12345);
+    },
+    getCode() {
+      if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(this.tel) || this.tel === "") {
+        Toast("手机号码输入有误");
+      } else {
+        axios.get("https://www./users/sendCode?tel=" + this.tel).then(res => {
+          if (res.data === 1) {
+            Toast("用户名已注册，请更改");
+          } else if (res.data === 0) {
+            Toast("获取验证码失败");
+          } else {
+            this.adminCode = res.data.code;
+            console.log(this.adminCode);
+          }
+        });
+      }
+    },
+    register() {
+      if (this.userName === "" || this.usertel === "手机号码格式错误") {
+        Toast("手机号码输入有误");
+        return;
+      }
+      if (this.sms === "" || this.sms !== this.adminCode) {
+        Toast("验证码输入有误");
+        return;
+      }
+      this.reallR();
+    },
+    reallR() {
+      this.zhud = true;
+      this.loading = true;
+      axios
+        .post("https://www.daxunxun.com/users/register", {
+          username: this.userName
+        })
+        .then(res => {
+          this.zhud = false;
+          this.loading = false;
+          if (res.data === 2) {
+            Toast("用户名已注册，请直接登录");
+          } else if (res.data === 0) {
+            Toast("注册失败");
+          } else {
+            Toast("注册成功");
+          }
+        });
+    }
+  }
 };
 </script>
 <style scoped>
@@ -236,7 +240,7 @@ html {
   align-items: center;
   color: #a4a4a4;
   font-size: 0.32rem;
-  margin-top: 0.533333rem;
+  margin-top: 0.666667rem;
 }
 .login-box-wrapper .should-know a {
   color: #a4a4a4;
@@ -274,8 +278,11 @@ html {
   font-size: 0.266667rem;
   color: red;
 }
-.i-view{
-    height: 1.0368rem;
-    width: .228133rem;
+.i-view {
+  height: 1.0368rem;
+  width: 0.228133rem;
+}
+.send-code {
+  font-size: 0.293333rem !important;
 }
 </style>
