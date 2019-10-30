@@ -5,7 +5,7 @@ const {
 } = require('../mongo/db')
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
-    let news = await find('NBA-player-backboard')
+    let news = await find('NBA-player-fouls')
     news = news.sort((a, b) => {
         return a.ranking * 1 - b.ranking * 1;
     })

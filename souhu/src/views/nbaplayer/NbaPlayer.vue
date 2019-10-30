@@ -4,26 +4,19 @@
       <Header :offset="3"></Header>
       <div data-v-58cb0d1e class="item-title">
         <section data-v-58cb0d1e class="tabs">
-          <!-- <div
+          <div
             v-for="(item,index) in nav"
             :key="index"
             data-v-58cb0d1e
             :class="['tab',{
-        'active' :offsetx === index
+        'active' :change === index
       }]"
             @click="highLight(index)"
             :to="{
         name:item.url
       }"
             v-text="item.title"
-          ></div>-->
-          <div data-v-58cb0d1e class="tab active">得分</div>
-          <div data-v-58cb0d1e class="tab">篮板</div>
-          <div data-v-58cb0d1e class="tab">助攻</div>
-          <div data-v-58cb0d1e class="tab">抢断</div>
-          <div data-v-58cb0d1e class="tab">盖帽</div>
-          <div data-v-58cb0d1e class="tab">失误</div>
-          <div data-v-58cb0d1e class="tab">犯规</div>
+          ></div>
         </section>
         <div data-v-58cb0d1e class="titles">
           <div data-v-58cb0d1e class="player">球员</div>
@@ -32,26 +25,28 @@
         </div>
       </div>
       <div data-v-58cb0d1e class="player-ranks-wrap">
-        <div data-v-58cb0d1e class="req-wrap">
-          <div data-v-58cb0d1e class="player-list">
-            <a
-              data-v-58cb0d1e
-              href="http://nbadata.m.sohu.com/nba/player.php?id=4840"
-              class="player-link data"
-              v-for="(item,index) in news"
-              :key="index"
-            >
-              <div data-v-58cb0d1e class="item player">
-                <div data-v-58cb0d1e class="player">
-                  <div data-v-58cb0d1e class="rank" v-text="item.ranking"></div>
-                  <div data-v-58cb0d1e class="name" v-text="item.playerName"></div>
+        <keep-alive>
+          <div data-v-58cb0d1e class="req-wrap">
+            <div data-v-58cb0d1e class="player-list">
+              <a
+                data-v-58cb0d1e
+                href="http://nbadata.m.sohu.com/nba/player.php?id=4840"
+                class="player-link data"
+                v-for="(item,index) in news"
+                :key="index"
+              >
+                <div data-v-58cb0d1e class="item player">
+                  <div data-v-58cb0d1e class="player">
+                    <div data-v-58cb0d1e class="rank" v-text="item.ranking"></div>
+                    <div data-v-58cb0d1e class="name" v-text="item.playerName"></div>
+                  </div>
+                  <div data-v-58cb0d1e class="team" v-text="item.teamName"></div>
+                  <div data-v-58cb0d1e class="goals" v-text="item.score"></div>
                 </div>
-                <div data-v-58cb0d1e class="team" v-text="item.teamName"></div>
-                <div data-v-58cb0d1e class="goals" v-text="item.score"></div>
-              </div>
-            </a>
+              </a>
+            </div>
           </div>
-        </div>
+        </keep-alive>
       </div>
     </div>
   </div>
@@ -66,7 +61,7 @@ export default {
   },
   data() {
     return {
-      // offsetx: 0,
+      change: 0,
       news: [],
       nav: [
         {
@@ -102,14 +97,37 @@ export default {
   },
   methods: {
     highLight(index) {
-      this.offsetx = index;
-      console.log(this.offsetx);
+      this.change = index;
+      // for (let i = 0; i < 99; i++) {
+      //   $(".player-list").removeChild($(".player-list").childNodes[i]);
+      // }
+      switch (this.change) {
+        case 0:
+          this.getNews("http://localhost:3000/NBAplayerscore");
+          break;
+        case 1:
+          this.getNews("http://localhost:3000/NBAplayerbackboard");
+          break;
+        case 2:
+          this.getNews("http://localhost:3000/NBAplayerassists");
+          break;
+        case 3:
+          this.getNews("http://localhost:3000/NBAplayersteals");
+          break;
+        case 4:
+          this.getNews("http://localhost:3000/NBAplayerblocks");
+          break;
+        case 5:
+          this.getNews("http://localhost:3000/NBAplayerturnovers");
+          break;
+        case 6:
+          this.getNews("http://localhost:3000/NNBAplayerfouls");
+          break;
+      }
     },
-    getNews() {
+    getNews(name) {
       (async () => {
-        let { news } = (await axios.get(
-          "http://localhost:3000/NBAplayerscore"
-        )).data;
+        let { news } = (await axios.get(name)).data;
         this.news = news;
       })();
     }
@@ -118,7 +136,7 @@ export default {
     Header
   },
   mounted() {
-    this.getNews();
+    this.getNews("http://localhost:3000/NBAplayerscore");
   }
 };
 </script>

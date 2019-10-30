@@ -20,8 +20,9 @@
                 <div class="winDetail">近况</div>
               </div>
             </div>
-            
-            <prince :is="currentTab" keep-alive></prince>
+            <keep-alive>
+              <prince :is="currentTab" keep-alive></prince>
+            </keep-alive>
           </div>
         </div>
       </div>

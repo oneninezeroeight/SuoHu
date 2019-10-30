@@ -77,7 +77,7 @@ export default {
     this.getNews();
     setTimeout(function() {
       $(".oper header").click();
-    }, 2100);
+    }, 2200);
   }
 };
 </script>
