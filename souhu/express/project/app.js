@@ -9,7 +9,21 @@ var usersRouter = require('./routes/users');
 var SportLeague = require('./routes/Sport-League')
 var NBAteams = require('./routes/NBA-teams')
 var NBAplayerbackboard = require('./routes/NBA-player-backboard')
+var NNBAplayerassists = require('./routes/NBA-player-assists')
+var NBAplayerblocks = require('./routes/NBA-player-blocks')
+var NNBAplayerfouls = require('./routes/NBA-player-fouls')
+var NBAplayersteals = require('./routes/NBA-player-steals')
+var NBAplayerturnovers = require('./routes/NBA-player-turnovers')
 var NBAplayerscore = require('./routes/NBA-player-score')
+
+
+
+var SportLeague = require('./routes/Sport-League');
+var NBAteams = require('./routes/NBA-teams');
+var NBASy = require('./routes/NBA-index');
+var NBASc = require('./routes/NBA-sc');
+var NBAXblm = require('./routes/NBA-xb');
+var NBADblm = require('./routes/NBA-db')
 
 var app = express();
 
@@ -19,7 +33,9 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use((req, res, next) => {
   // 允许所有请求跨域，所有请求的响应头部分都带上cors
@@ -34,6 +50,19 @@ app.use('/SportLeague', SportLeague);
 app.use('/NBAteams', NBAteams);
 app.use('/NBAplayerbackboard', NBAplayerbackboard);
 app.use('/NBAplayerscore', NBAplayerscore);
+app.use('/NBAplayerassists', NNBAplayerassists);
+app.use('/NBAplayerblocks', NBAplayerblocks);
+app.use('/NNBAplayerfouls', NNBAplayerfouls);
+app.use('/NBAplayersteals', NBAplayersteals);
+app.use('/NBAplayerturnovers', NBAplayerturnovers);
+
+
+
+
+app.use('/NBASy', NBASy);
+app.use('/NBASc', NBASc);
+app.use('/NBAXblm', NBAXblm);
+app.use('/NBADblm', NBADblm);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

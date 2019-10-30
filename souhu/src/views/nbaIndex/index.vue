@@ -81,98 +81,6 @@
                     </a>
                   </div>
                 </div>
-                <!-- <div data-spm="rec-list" class="columns-wrap">
-                  <div class="navs fold">
-                    <a
-                      href="http://m.sohu.com/media/458722?spm=smwp.fb-nba-home.rec-list.1.1572235353618kHDzu7P"
-                      class="item-wrap"
-                      data-spm-data="1"
-                    >
-                      <div class="item">
-                        <header
-                          class="icon"
-                          lazy-progressive="true"
-                          data-src="//statics.itc.cn/sports/Particular.png"
-                          lazy="loaded"
-                          style="background-image: url(&quot;//statics.itc.cn/sports/Particular.png&quot;);"
-                        ></header>
-                        <footer class="title">独家</footer>
-                      </div>
-                    </a>
-                    <a
-                      href="http://m.sohu.com/z/nba/team/13?spm=smwp.fb-nba-home.rec-list.2.1572235353618kHDzu7P"
-                      class="item-wrap"
-                      data-spm-data="2"
-                    >
-                      <div class="item">
-                        <header
-                          class="icon"
-                          lazy-progressive="true"
-                          data-src="//statics.itc.cn/sports/basketball/NBA/teamicon/13.png"
-                          lazy="loaded"
-                          style="background-image: url(&quot;//statics.itc.cn/sports/basketball/NBA/teamicon/13.png&quot;);"
-                        ></header>
-                        <footer class="title">湖人</footer>
-                      </div>
-                    </a>
-                    <a
-                      href="http://m.sohu.com/z/nba/team/9?spm=smwp.fb-nba-home.rec-list.3.1572235353618kHDzu7P"
-                      class="item-wrap"
-                      data-spm-data="3"
-                    >
-                      <div class="item">
-                        <header
-                          class="icon"
-                          lazy-progressive="true"
-                          data-src="//statics.itc.cn/sports/basketball/NBA/teamicon/9.png"
-                          lazy="loaded"
-                          style="background-image: url(&quot;//statics.itc.cn/sports/basketball/NBA/teamicon/9.png&quot;);"
-                        ></header>
-                        <footer class="title">勇士</footer>
-                      </div>
-                    </a>
-                    <a
-                      href="http://m.sohu.com/z/nba/team/24?spm=smwp.fb-nba-home.rec-list.4.1572235353618kHDzu7P"
-                      class="item-wrap"
-                      data-spm-data="4"
-                    >
-                      <div class="item">
-                        <header
-                          class="icon"
-                          lazy-progressive="true"
-                          data-src="//statics.itc.cn/sports/basketball/NBA/teamicon/24.png"
-                          lazy="loaded"
-                          style="background-image: url(&quot;//statics.itc.cn/sports/basketball/NBA/teamicon/24.png&quot;);"
-                        ></header>
-                        <footer class="title">马刺</footer>
-                      </div>
-                    </a>
-                    <a
-                      href="http://m.sohu.com/z/nba/team/2?spm=smwp.fb-nba-home.rec-list.5.1572235353618kHDzu7P"
-                      class="item-wrap"
-                      data-spm-data="5"
-                    >
-                      <div class="item">
-                        <header
-                          class="icon"
-                          lazy-progressive="true"
-                          data-src="//statics.itc.cn/sports/basketball/NBA/teamicon/2.png"
-                          lazy="loaded"
-                          style="background-image: url(&quot;//statics.itc.cn/sports/basketball/NBA/teamicon/2.png&quot;);"
-                        ></header>
-                        <footer class="title">凯尔特人</footer>
-                      </div>
-                    </a>
-                    <div class="item-wrap oper">
-                      <div class="item">
-                        <header class="icon more">
-                          <img src="../../assets/img/headerImg/微信截图_20191028104600_r2_c2.png" alt />
-                        </header>
-                        <footer class="title">更多</footer>
-                      </div>
-                    </div>
-                  </div>
-                </div>-->
                 <keep-alive>
                   <NBAteams></NBAteams>
                 </keep-alive>
@@ -189,6 +97,8 @@
                               data-spm-content="a/350096110_458722"
                               class="feed-item"
                               data-spm-data="1"
+                              v-for="(item,index) in news"
+                              :key="index"
                             >
                               <a
                                 href="http://m.sohu.com/a/350096110_458722?scm=0.0.0.0&amp;spm=smwp.fb-nba-home.fd-d.1.1572249036835X6cmDS5"
@@ -198,7 +108,7 @@
                                 data-spm-data="1"
                               >
                                 <div class="onePic_detail">
-                                  <h3 class="title">前瞻：库里对阵鹈鹕三少 勇士急需首胜稳定军心</h3>
+                                  <h3 class="title" >{{item.mobileTitle}}</h3>
                                   <div class="item_info">
                                     <!---->
                                     <!---->
@@ -208,9 +118,9 @@
                                 </div>
                                 <div
                                   class="onePic_img"
-                                  data-src="//29e5534ea20a8.cdn.sohucs.com/q_70,c_lfill,w_228,h_148,g_faces/os/news/8037f70f8037c7aa867a4da5ec9c5270.webp"
+                                  :data-src="item.images"
                                   lazy="loaded"
-                                  style="background-image: url(&quot;//29e5534ea20a8.cdn.sohucs.com/q_70,c_lfill,w_228,h_148,g_faces/os/news/8037f70f8037c7aa867a4da5ec9c5270.webp&quot;);"
+                                  v-bind:style="{backgroundImage: 'url('+item.images+')'}"
                                 ></div>
                               </a>
                             </li>
@@ -235,12 +145,29 @@
 import Header from "../../components/header/header.vue";
 import NBAteams from "../../../src/components/NBA-teams/NBA-teams.vue";
 import SportLeague from "../../components/Sport-League/Sport-League.vue";
+import axios from "axios";
 export default {
+  data() {
+    return {
+      news: [],
+    };
+  },
+  methods: {
+    getNews() {
+      (async () => {
+        let { news } = (await axios.get("http://localhost:3000/NBASy")).data;
+        this.news = news;
+      })();
+    }
+  },
   components: {
     Header,
     NBAteams,
     SportLeague
-  }
+  },
+  mounted() {
+     this.getNews();
+  },
 };
 </script>
 <style  scoped>

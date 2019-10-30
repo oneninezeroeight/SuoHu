@@ -1,31 +1,55 @@
 <template>
   <div class="req-wrap">
     <div class="team-list" data-spm="Western-rank">
+      
       <a
         href="http://m.sohu.com/z/nba/team/16?spm=smwp.fb-nba-home.Western-rank.16.1572310964008qsNsZmB"
         data-spm-data="16"
       >
-        <div class="team-item high">
-          <div class="team">
-            <div class="rank">1</div>
-            <div
-              class="flag"
-              lazy-progressive="true"
-              data-src="//statics.itc.cn/sports/basketball/NBA/teamicon/16.png"
-              lazy="loaded"
-              style="background-image: url(&quot;//statics.itc.cn/sports/basketball/NBA/teamicon/16.png&quot;);"
-            ></div>
-            <div class="name">森林狼</div>
+        
+          <div class="team-item high" v-for="(item,index) in news" :key="index">
+            <div class="team">
+              <div class="rank">{{item.place}}</div>
+              <div
+                class="flag"
+                lazy-progressive="true"
+                data-src="item.teamLogo"
+                lazy="loaded"
+                v-bind:style="{backgroundImage: 'url('+item.teamLogo+')'}"
+              ></div>
+              <div class="name">{{item.teamName}}</div>
+            </div>
+            <div class="wins">{{item.wins}}</div>
+            <div class="losses">{{item.losses}}</div>
+            <div class="winDiff">{{item.winDiff}}</div>
+            <div class="winDetail">***</div>
           </div>
-          <div class="wins">3</div>
-          <div class="losses">0</div>
-          <div class="winDiff">0</div>
-          <div class="winDetail">3连胜</div>
-        </div>
+        
       </a>
     </div>
   </div>
 </template>
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      news: []
+    };
+  },
+  methods: {
+    getNews() {
+      (async () => {
+        let { news } = (await axios.get("http://localhost:3000/NBAXblm")).data;
+        this.news = news;
+      })();
+    }
+  },
+  mounted() {
+    this.getNews();
+  }
+};
+</script>
 <style scoped>
 .team-rank-wrap .team-list .team-item.high {
   background-color: #fff8f0;
