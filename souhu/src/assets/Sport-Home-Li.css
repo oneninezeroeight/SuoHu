@@ -1,0 +1,32 @@
+.ellipsis {
+    line-height: 1.05em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sports-home-page {
+    position: relative;
+}
+
+.sports-home-page .top-bill {
+    overflow: hidden;
+}
+
+.sports-home-page .vad-banner-wrap {
+    max-height: 1.546667rem;
+}
+
+.sports-home-page .feed-item {
+    border-top: 0.013333rem solid #e8e8e8;
+    margin: -0.026667rem 0.346667rem;
+}
+
+.sports-home-page .feed-item:first-of-type {
+    border-top: none;
+}
+
+.sports-home-page .liAdDom iframe {
+    margin-top: 0.213333rem;
+    margin-bottom: -0.186667rem;
+}

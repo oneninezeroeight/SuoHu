@@ -1,7 +1,7 @@
 <template name="component-name">
   <div>
     <div class="vfixed-wrap sticky">
-      <!-- <div class="content fixed" style="display: none;">
+      <div class="content origin">
         <div class="header-wrap">
           <div data-v-90fe0322 data-spm="hdn" class="home-header">
             <a data-v-90fe0322 href="http://localhost:8082/" data-spm-data="1">
@@ -12,40 +12,12 @@
                 data-v-90fe0322
                 class="logo"
                 lazy-progressive="true"
-                data-src="//statics.itc.cn/sports/icon/2.png"
-                lazy="loading"
-                style="background-image: url(&quot;//statics.itc.cn/sports/icon/2.png?imageView2/1/w/10/h/10&quot;);"
-              ></div>
-              <div data-v-90fe0322 class="main">
-                <div data-v-90fe0322 class="name">NBA</div>
-              </div>
-            </div>
-            <div data-v-90fe0322 class="menu bicon-menu"></div>
-          </div>
-        </div>
-      </div>-->
-      <div class="content origin">
-        <div class="header-wrap">
-          <div
-            data-v-90fe0322
-            data-spm="hdn"
-            class="home-header"
-            style="background:white;border-color: white;"
-          >
-            <a data-v-90fe0322 href="http://localhost:8082/" data-spm-data="1">
-              <div data-v-90fe0322 class="back bicon-left-arrow"></div>
-            </a>
-            <div data-v-90fe0322 class="content">
-              <div
-                data-v-90fe0322
-                class="logo"
-                lazy-progressive="true"
-                data-src="//statics.itc.cn/sports/icon/2.png"
+                data-src="//statics.itc.cn/sports/icon/3.png"
                 lazy="loaded"
-                style="background-image: url(&quot;//statics.itc.cn/sports/icon/2.png&quot;);"
+                style="background-image: url(&quot;//statics.itc.cn/sports/icon/3.png&quot;);"
               ></div>
               <div data-v-90fe0322 class="main">
-                <div data-v-90fe0322 class="name">NBA</div>
+                <div data-v-90fe0322 class="name">CBA</div>
               </div>
             </div>
             <div data-v-90fe0322 class="menu bicon-menu" @click="click"></div>
@@ -91,19 +63,15 @@ export default {
       nav: [
         {
           title: "要闻",
-          url: "nbayw"
+          url: "cbayw"
         },
         {
           title: "赛程",
-          url: "nbasc"
+          url: "cbasc"
         },
         {
-          title: "排行",
-          url: "nbaph"
-        },
-        {
-          title: "球员",
-          url: "nbaplayer"
+          title: "积分",
+          url: "cbaph"
         }
       ],
       // 控制高亮
@@ -117,5 +85,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-</style>

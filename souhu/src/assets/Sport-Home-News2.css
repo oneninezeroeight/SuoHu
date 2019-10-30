@@ -1,0 +1,377 @@
+/* 播放器主体样式 */
+
+/* 部分样式重置 */
+
+div,
+h2,
+video {
+    margin: 0;
+    padding: 0;
+}
+
+/* 全局变量配置 */
+
+/* 字号相关 */
+
+/* 颜色相关 */
+
+/* 主色调 */
+
+/* 主播放控件 */
+
+/* 播放进度条 */
+
+/* 间距相关 */
+
+/* 层级相关 */
+
+/* 各播放器元素 */
+
+/* 播放器元素 */
+
+.mptc-video {
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    position: absolute;
+}
+
+/* loading 图标 */
+
+/* 动画 */
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.mptc-player-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.mptc-player-mask .mptc-player-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.66666667rem;
+    height: 0.66666667rem;
+    margin: -0.37333333rem 0 0 -0.37333333rem;
+    border-top: 0.08rem rgba(215, 215, 215, 0.45) solid;
+    border-right: 0.08rem rgba(215, 215, 215, 0.45) solid;
+    border-bottom: 0.08rem rgba(215, 215, 215, 0.45) solid;
+    border-left: 0.08rem #ffffff solid;
+    border-radius: 100%;
+    -webkit-animation: spin 0.8s infinite;
+    animation: spin 0.8s infinite;
+}
+
+/* 视频标题 */
+
+.mptc-video-title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1.86666667rem;
+    padding: 0.26666667rem 0.4rem;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-size: 0.45333333rem;
+    font-family: PingFangSC-Semibold, sans-serif;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8), transparent);
+}
+
+/* 位于中间的大播放按钮 */
+
+.mptc-player-btn-play-big {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1.46666667rem;
+    height: 1.46666667rem;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0i5Zu+5bGCXzEiIGRhdGEtbmFtZT0i5Zu+5bGCIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0Ij48ZGVmcz48c3R5bGU+LmNscy0xe29wYWNpdHk6MC40O308L3N0eWxlPjwvZGVmcz48dGl0bGU+aWNfYmxhY2tfY2lyY2xlPC90aXRsZT48Y2lyY2xlIGNsYXNzPSJjbHMtMSIgY3g9IjEyIiBjeT0iMTIiIHI9IjEyIi8+PC9zdmc+);
+    background-size: 1.44rem;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    fill: white;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.mptc-player-btn-play-big svg {
+    width: 0.4rem;
+    height: 0.50666667rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-40%, -50%);
+    transform: translate(-40%, -50%);
+}
+
+/* 视频信息：播放数、时长 */
+
+.mptc-video-info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1.86666667rem;
+    padding: 0.26666667rem 0.4rem;
+    box-sizing: border-box;
+    font-size: 0.26666667rem;
+    overflow: hidden;
+    font-family: PingFangSC-Semibold, sans-serif;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7), transparent);
+}
+
+.mptc-video-info .mptc-video-info-num {
+    position: absolute;
+    left: 0.4rem;
+    bottom: 0.26666667rem;
+}
+
+.mptc-video-info .mptc-video-info-duration {
+    position: absolute;
+    right: 0.4rem;
+    bottom: 0.26666667rem;
+}
+
+/* 功能控制器 模块 */
+
+/* 控制器 进度条*/
+
+.mptc-video-controller-progress {
+    flex: 1;
+    position: relative;
+}
+
+.mptc-video-controller-progress .mptc-video-controller-playProgress-length {
+    height: 0.05333333rem;
+    width: 100%;
+    margin-top: 0.53333333rem;
+    background-color: #a4a4a4;
+    border-radius: 0.53333333rem;
+}
+
+.mptc-video-controller-progress .mptc-video-controller-playProgress-length .mptc-video-controller-playProgress {
+    width: 0;
+    height: 0.05333333rem;
+    background-color: #f0a400;
+    box-shadow: 0 0 0.08rem #f0a400;
+    float: left;
+    border-radius: 0.53333333rem;
+    position: absolute;
+}
+
+.mptc-video-controller-progress .mptc-video-controller-playProgress-length .mptc-video-controller-playProgress .mptc-video-controller-playBall {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAASJJREFUSA29ljsSgjAURY21K5CKSlvtGbZAwXJclHugsNNWF6A2dlrZ4LkMzAgyGiW+O3OHX5JDXn7PjTxUluWCYhlOcISnWDrhIy7w2jm34/q7AOV4j32lsvnXRCrFeONL6SmnurEXmIIpvuChUhvpW6gK4DsOJbXVD+WDwhiiZ92fVZuv4eXlkDHrQrrPm1Zo+arZ+G9Vs9eJDGnPZdb6i/APB9bp3AHTot6Gb7+3xeWY19pBrJQJqO3KSomA2hutFGkMr9AmRsSbemipUkAdMVY6C6jzzEpHAXV4WqkwX/jmW1szS1cGMW0zWI92x5N6B9D2AK6hKWCbFKMZQ4CChkg1PidRT1CFd8iY+qeJDbQOcfBEuFqHz5C+e3obLNV/AEinT9IJqrPOAAAAAElFTkSuQmCC);
+    background-repeat: no-repeat;
+}
+
+[data-dpr="1"] .mptc-video-controller-progress .mptc-video-controller-playProgress-length .mptc-video-controller-playProgress .mptc-video-controller-playBall {
+    height: 20px;
+    width: 20px;
+    margin-top: -9px;
+    right: -9px;
+    background-size: 14px 14px;
+    background-position: 3px 3px;
+}
+
+[data-dpr="2"] .mptc-video-controller-progress .mptc-video-controller-playProgress-length .mptc-video-controller-playProgress .mptc-video-controller-playBall {
+    height: 40px;
+    width: 40px;
+    margin-top: -18px;
+    right: -18px;
+    background-size: 28px 28px;
+    background-position: 6px 6px;
+}
+
+[data-dpr="3"] .mptc-video-controller-progress .mptc-video-controller-playProgress-length .mptc-video-controller-playProgress .mptc-video-controller-playBall {
+    height: 60px;
+    width: 60px;
+    margin-top: -27px;
+    right: -27px;
+    background-size: 42px 42px;
+    background-position: 9px 9px;
+}
+
+/*时间块样式 */
+
+.mptc-video-controller-currentTime {
+    white-space: nowrap;
+    margin-right: 0.26666667rem;
+    color: #fff;
+    font-size: 0.29333333rem;
+    font-family: PingFangSC-Semibold, sans-serif;
+    line-height: 1.12rem;
+    width: 0.76rem;
+}
+
+.mptc-video-controller-duration {
+    white-space: nowrap;
+    width: 0.76rem;
+    margin-left: 0.26666667rem;
+    margin-right: 0.53333333rem;
+    color: #fff;
+    font-size: 0.29333333rem;
+    font-family: PingFangSC-Semibold, sans-serif;
+    line-height: 1.12rem;
+}
+
+/*播放器按钮 样式*/
+
+.mptc-video-controller-toggle {
+    padding: 0 0.53333333rem;
+    fill: #fff;
+    width: 0.45333333rem;
+}
+
+.mptc-video-controller-toggle .sohu-video-pauseImg {
+    width: 0.45333333rem;
+    height: 0.50666667rem;
+    margin-top: 0.30666667rem;
+}
+
+.mptc-video-controller-toggle .sohu-video-playImg {
+    width: 0.4rem;
+    height: 0.45333333rem;
+    margin-top: 0.33333333rem;
+    display: none;
+}
+
+.mptc-video-features-controller {
+    height: 1.12rem;
+    width: 100%;
+    padding-top: 0.48rem;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.8), transparent);
+    opacity: 0;
+    display: flex;
+}
+
+/* 进度控制器 */
+
+.mptc-video-progress-controller {
+    width: 100%;
+    height: 0.05333333rem;
+    background-color: #a4a4a4;
+    opacity: 0;
+}
+
+.mptc-video-progress-controller .mptc-video-progress-controller-played {
+    width: 0;
+    height: 0.05333333rem;
+    background-color: #f0a400;
+}
+
+.mptc-video-controller {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.mptc-video-controller .mptc-video-controller-mask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* 播放器遮罩层 */
+
+.mptc-player-poster {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.mptc-player-poster .mptc-player-poster-img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 视频播放源不存在时 样式 */
+
+.mptc-player-error {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.mptc-player-error .mptc-player-error-description {
+    line-height: normal;
+    position: absolute;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.mptc-player-error .mptc-player-error-description .mptc-player-error-description-icon {
+    fill: white;
+    display: inline-block;
+    width: 0.45333333rem;
+    height: 0.45333333rem;
+    vertical-align: baseline;
+    margin-right: 0.10666667rem;
+}
+
+.mptc-player-error .mptc-player-error-description .mptc-player-error-description-icon svg {
+    width: 0.45333333rem;
+    height: 0.45333333rem;
+}
+
+.mptc-player-error .mptc-player-error-description .mptc-player-error-description-text {
+    display: inline;
+    font-size: 0.42666667rem;
+    font-weight: bold;
+    font-family: PingFangSC-Regular, sans-serif;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.mptc-video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    line-height: 1;
+    color: #ffffff;
+    overflow: hidden;
+    background: #000;
+}

@@ -1,0 +1,25 @@
+.ellipsis {
+    line-height: 1.05em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.navs-wrap {
+    background-color: #322f22;
+}
+
+.navs-wrap .nav-list {
+    position: relative;
+    clear: both;
+    padding: 0.106667rem;
+}
+
+.navs-wrap .nav-list .item {
+    float: left;
+    width: 16.666666%;
+    font-size: 0.453333rem;
+    padding: 0.213333rem 0;
+    text-align: center;
+    color: #fff;
+}

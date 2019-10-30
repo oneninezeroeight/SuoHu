@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [{
-  path: '/',
+  path: '/nbayw',
   name: 'nbayw',
   component: () => import('../views/nbaIndex/index.vue')
 },
@@ -15,7 +15,7 @@ const routes = [{
   component: () => import('../views/nbasc/NbaSc.vue')
 },
 {
-  path: '/nbaph',
+  path: '/  ',
   name: 'nbaph',
   component: () => import('../views/nbaph/NbaPh.vue')
 },
@@ -23,6 +23,16 @@ const routes = [{
   path: '/nbaplayer',
   name: 'nbaplayer',
   component: () => import('../views/nbaplayer/NbaPlayer.vue')
+},
+{
+  path: '/slide',
+  name: 'slide',
+  component: () => import('../components/Slide/Slide.vue')
+},
+{
+  path: '/',
+  name: 'sporthome',
+  component: () => import('../views/SportNews/SportNews.vue')
 },
   // {
   //   path: '/detail/:id',

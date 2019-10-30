@@ -1,0 +1,84 @@
+.ellipsis {
+    line-height: 1.05em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.section-wrap {
+    position: relative;
+    border-bottom: 0.133333rem solid #f2f3f5;
+}
+
+.section-wrap .section-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    padding-top: 0.4rem;
+    padding-bottom: 0.173333rem;
+    height: 0.533333rem;
+}
+
+.section-wrap .section-menu .label {
+    position: relative;
+    font-size: 0.533333rem;
+    padding-left: 0.4rem;
+    color: #121212;
+}
+
+.section-wrap .section-menu .label:before {
+    position: absolute;
+    left: 0;
+    top: 0.106667rem;
+    content: '';
+    width: 0.266667rem;
+    height: 0.32rem;
+    background-color: #fdd000;
+}
+
+.section-wrap .section-menu .links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding-right: 0.4rem;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+.section-wrap .section-menu .links .link {
+    color: #121212;
+    padding-left: 0.4rem;
+    font-size: 0.426667rem;
+}
+
+.section-wrap .feed-item:last-of-type {
+    border-bottom: none;
+}
+
+.section-wrap .section-bill {
+    border-top: 0.133333rem solid #f2f3f5;
+    padding: 0.266667rem 0.4rem;
+}
+
+.section-wrap .section-bill:empty {
+    display: none;
+}
+
+.section-wrap .section-bill .text-wrapper {
+    padding: 0.32rem 0;
+}
+
+.section-wrap .section-bill .banner-wrapper {
+    padding: 0.32rem 0;
+}
+
+.section-wrap .section-bill>div:nth-of-type(n + 2) {
+    border-top: 1px solid #ebebeb;
+}

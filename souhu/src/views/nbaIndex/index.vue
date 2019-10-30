@@ -108,7 +108,7 @@
                                 data-spm-data="1"
                               >
                                 <div class="onePic_detail">
-                                  <h3 class="title" >{{item.mobileTitle}}</h3>
+                                  <h3 class="title">{{item.mobileTitle}}</h3>
                                   <div class="item_info">
                                     <!---->
                                     <!---->
@@ -149,7 +149,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      news: [],
+      news: []
     };
   },
   methods: {
@@ -166,8 +166,8 @@ export default {
     SportLeague
   },
   mounted() {
-     this.getNews();
-  },
+    this.getNews();
+  }
 };
 </script>
 <style  scoped>

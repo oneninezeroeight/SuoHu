@@ -15,7 +15,7 @@ var NNBAplayerfouls = require('./routes/NBA-player-fouls')
 var NBAplayersteals = require('./routes/NBA-player-steals')
 var NBAplayerturnovers = require('./routes/NBA-player-turnovers')
 var NBAplayerscore = require('./routes/NBA-player-score')
-
+var SportHomeNews = require('./routes/Sport-Home-News')
 
 
 var SportLeague = require('./routes/Sport-League');
@@ -55,6 +55,7 @@ app.use('/NBAplayerblocks', NBAplayerblocks);
 app.use('/NNBAplayerfouls', NNBAplayerfouls);
 app.use('/NBAplayersteals', NBAplayersteals);
 app.use('/NBAplayerturnovers', NBAplayerturnovers);
+app.use('/SportHomeNews', SportHomeNews);
 
 
 
