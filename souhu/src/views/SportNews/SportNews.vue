@@ -24,16 +24,20 @@
         class="fr"
         data-spm-data="2"
       >
-        <div class="right-promotion">
-          <img
-            src="http://29e5534ea20a8.cdn.sohucs.com/os/news/9a0013e23cf70c139a758eafba7157b9.jpg"
-            alt
-            title
-            aria-hidden="true"
-            class="icon"
-          />
-          <div class="txt">登录</div>
-        </div>
+        <a href="http://localhost:8080/login">
+          <div class="right-promotion">
+            <img
+              src="//statics.itc.cn/mobile/ucenter/images/ic_home_photo_gray.png"
+              alt
+              title
+              aria-hidden="true"
+              class="icon"
+              style="border-radius: 50%;margin-right:15px"
+            />
+
+            <!-- <div class="txt"></div> -->
+          </div>
+        </a>
       </a>
     </header>
     <nav data-spm="navs" class="navs-wrap" id="navMenu">

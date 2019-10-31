@@ -59,6 +59,11 @@ const routes = [{
   name: 'zc',
   component: () => import('../views/login/zc.vue')
 },
+{
+  path: '/details',
+  name: 'details',
+  component: () => import('../views/details/details.vue')
+},
 ]
 
 const router = new VueRouter({
