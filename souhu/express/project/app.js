@@ -22,6 +22,7 @@ var NBAXblm = require('./routes/NBA-xb');
 var NBADblm = require('./routes/NBA-db')
 var Login = require('./routes/login')
 var ZC = require('./routes/zc')
+var Register = require('./routes/register')
 var app = express();
 
 // view engine setup
@@ -58,6 +59,7 @@ app.use('/NBAXblm', NBAXblm);
 app.use('/NBADblm', NBADblm);
 app.use('/Login', Login);
 app.use('/ZC', ZC);
+app.use('/Register', Register);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
