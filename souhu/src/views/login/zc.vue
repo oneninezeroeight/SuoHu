@@ -37,7 +37,7 @@
             type="text"
             class="passport"
             placeholder="请输入账号"
-            v-model="userName"
+            v-model="username"
             :error-message="usertel"
           />
           <van-button
@@ -57,7 +57,7 @@
             type="tel"
             class="password"
             placeholder="请输入验证码"
-            v-model="sms"
+            v-model="msg"
             :error-message="test"
           />
           <i data-v-ef68022e class="icon i-view" style="display: none;"></i>
@@ -90,8 +90,8 @@
         @click="register"
       >开始使用</div>
       <div data-v-ef68022e data-spm="method" class="switch-and-forget">
-        <div data-v-ef68022e class="switch-method">
-          <i data-v-ef68022e class="icon i-switch" @click="toLogin"></i>账号密码登录
+        <div data-v-ef68022e class="switch-method" @click="toLogin">
+          <i data-v-ef68022e class="icon i-switch"></i>账号密码登录
         </div>
         <a
           data-v-ef68022e
@@ -117,6 +117,13 @@
           >帮助中心</a>
         </div>
       </div>
+      <div id="toast" :style="{'opacity': opacity ,'display': display}" @click="closeTip">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+          <!-- <i class="weui-icon-success-no-circle weui-icon_toast"></i> -->
+          <p class="weui-toast__content">{{tip}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -131,26 +138,29 @@ Vue.use(Divider);
 export default {
   data() {
     return {
-      userName: "",
-      sms: "",
+      username: "",
+      msg: "",
       isFocus: 0,
-      buttonmsg: "获取验证码"
+      buttonmsg: "获取验证码",
+      tip: "",
+      opacity: "0",
+      display: "none"
     };
   },
   computed: {
     usertel() {
-      if (this.userName === "") {
+      if (this.username === "") {
         return "";
-      } else if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(this.userName)) {
+      } else if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)) {
         return "手机号格式错误";
       } else {
         return "";
       }
     },
     test() {
-      if (this.sms === "") {
+      if (this.msg === "") {
         return "";
-      } else if (this.sms.length !== 5) {
+      } else if (this.msg.length !== 5) {
         return "验证码格式错误";
       } else {
         return "";
@@ -162,7 +172,11 @@ export default {
       this.isFocus = !this.isFocus;
     },
     toLogin() {
-      this.$router.replace("");
+      this.$router.replace("/login");
+    },
+    closeTip() {
+      this.display = "none";
+      this.opacity = "0";
     },
     sendCode() {
       let time = 4;
@@ -179,51 +193,72 @@ export default {
         this.buttonmsg = time + "秒后重新发送";
       }, 1000);
       this.getCode();
-      console.log(12345);
+      // console.log(12345);
     },
     getCode() {
-      if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(this.tel) || this.tel === "") {
-        Toast("手机号码输入有误");
+      if (
+        !/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) ||
+        this.username === ""
+      ) {
+        this.display = "block";
+        this.opacity = "1";
+        this.tip = "手机号码输入有误";
       } else {
-        axios.get("https://www./users/sendCode?tel=" + this.tel).then(res => {
-          if (res.data === 1) {
-            Toast("用户名已注册，请更改");
-          } else if (res.data === 0) {
-            Toast("获取验证码失败");
-          } else {
-            this.adminCode = res.data.code;
-            console.log(this.adminCode);
-          }
-        });
+        this.msg = "12345";
+        console.log(this.msg);
       }
     },
     register() {
-      if (this.userName === "" || this.usertel === "手机号码格式错误") {
+      if (this.username === "" || this.usertel === "手机号码格式错误") {
         Toast("手机号码输入有误");
         return;
       }
-      if (this.sms === "" || this.sms !== this.adminCode) {
+      if (this.msg === "" || this.msg === "验证码格式错误") {
         Toast("验证码输入有误");
         return;
       }
       this.reallR();
+      console.log("2222");
+      
     },
     reallR() {
       this.zhud = true;
       this.loading = true;
       axios
-        .post("https://www.daxunxun.com/users/register", {
-          username: this.userName
+        .get("http://localhost:3000/ZC", {
+          username: this.username,
+          msg: this.msg
         })
         .then(res => {
+          var user = res.data.news[0].username;
+          var msg = res.data.news[0].msg;
+          console.log(res.data);
+          console.log(msg);
+          
+          
           this.zhud = false;
           this.loading = false;
-          if (res.data === 2) {
-            Toast("用户名已注册，请直接登录");
-          } else if (res.data === 0) {
-            Toast("注册失败");
+          if (this.username != user) {
+            this.display = "block";
+            this.opacity = "1";
+            this.tip = "用户不存在";
           } else {
-            Toast("注册成功");
+            if (this.msg != msg) {
+              this.display = "block";
+              this.opacity = "1";
+              this.tip = "验证码错误";
+            } else {
+              if (this.isFocus == 0) {
+                this.display = "block";
+                this.opacity = "1";
+                this.tip = "请勾选协议";
+              } else {
+                this.display = "block";
+                this.opacity = "1";
+                this.tip = "登录注册成功";
+                this.$router.back("/");
+              }
+            }
           }
         });
     }

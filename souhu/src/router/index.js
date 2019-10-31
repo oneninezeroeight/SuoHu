@@ -31,17 +31,17 @@ const routes = [{
 },
 {
   path: '/login',
-  name: 'sporthome',
+  name: 'login',
   component: () => import('../views/login/login.vue')
 },
 {
   path: '/login2',
-  name: 'sporthome',
+  name: 'login2',
   component: () => import('../views/login/login2.vue')
 },
 {
   path: '/zc',
-  name: 'sporthome',
+  name: 'zc',
   component: () => import('../views/login/zc.vue')
 },
 ]

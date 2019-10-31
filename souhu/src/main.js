@@ -17,6 +17,7 @@ import './assets/Sport-Home-News4.css'
 import './assets/Sport-Home-Li.css'
 import './assets/Sport-Home-images.css'
 import './assets/Headers.css'
+import 'weui'
 Vue.config.productionTip = false
 
 new Vue({
