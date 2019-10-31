@@ -13,7 +13,6 @@
           href="http://m.sohu.com/z/nba/match/2019102825?spm=smwp.fb-nba-home.ml.1.15722605963069pAM8o1"
           data-spm-data="1"
         >
-        
           <div data-v-5fc8a3bc class="item" v-for="(item,index) in news" :key="index">
             <div data-v-5fc8a3bc class="nation host">
               <div
@@ -43,7 +42,6 @@
               <div data-v-5fc8a3bc class="name">{{item.vsTeam}}</div>
             </div>
           </div>
-          
         </a>
       </div>
     </div>

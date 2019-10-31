@@ -10,12 +10,17 @@ const routes = [{
   component: () => import('../views/nbaIndex/index.vue')
 },
 {
+  path: '/cbayw',
+  name: 'cbayw',
+  component: () => import('../views/nbaIndex/cbaindex.vue')
+},
+{
   path: '/nbasc',
   name: 'nbasc',
   component: () => import('../views/nbasc/NbaSc.vue')
 },
 {
-  path: '/  ',
+  path: '/nbaph ',
   name: 'nbaph',
   component: () => import('../views/nbaph/NbaPh.vue')
 },
@@ -28,6 +33,16 @@ const routes = [{
   path: '/',
   name: 'sporthome',
   component: () => import('../views/SportNews/SportNews.vue')
+},
+{
+  path: '/cbasc',
+  name: 'cbasc',
+  component: () => import('../views/nbasc/CbaSc.vue')
+},
+{
+  path: '/cbaph ',
+  name: 'cbaph',
+  component: () => import('../views/nbaph/CbaPh.vue')
 },
 {
   path: '/login',

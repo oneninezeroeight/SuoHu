@@ -1,0 +1,5 @@
+{"_id":{"$oid":"5dba50c290a544385895b497"},"ranking":{"$numberInt":"5"},"himages":"//statics.itc.cn/sports/CBAteamicon/NTe014.png","vimages":"//statics.itc.cn/sports/CBAteamicon/Te009.png","hName":"北控","vName":"上海"}
+{"_id":{"$oid":"5dba50c290a544385895b498"},"ranking":{"$numberInt":"1"},"himages":"//statics.itc.cn/sports/CBAteamicon/Te007.png","vimages":"//statics.itc.cn/sports/CBAteamicon/Te011.png","hName":"广东","vName":"辽宁"}
+{"_id":{"$oid":"5dba50c290a544385895b499"},"ranking":{"$numberInt":"2"},"himages":"//statics.itc.cn/sports/CBAteamicon/Te005.png","vimages":"//statics.itc.cn/sports/CBAteamicon/Te004.png","hName":"江苏","vName":"浙江"}
+{"_id":{"$oid":"5dba50c290a544385895b49a"},"ranking":{"$numberInt":"3"},"himages":"//statics.itc.cn/sports/CBAteamicon/Te029.png","vimages":"//statics.itc.cn/sports/CBAteamicon/Te012.png","hName":"天津","vName":"北京"}
+{"_id":{"$oid":"5dba50c290a544385895b49b"},"ranking":{"$numberInt":"4"},"himages":"//statics.itc.cn/sports/CBAteamicon/Te011.png","vimages":"//statics.itc.cn/sports/CBAteamicon/Te028.png","hName":"辽宁","vName":"广厦"}
