@@ -24,7 +24,7 @@
         class="fr"
         data-spm-data="2"
       >
-        <a href="http://localhost:8080/login">
+        <a href="http://localhost:8080/ZC">
           <div class="right-promotion">
             <img
               src="//statics.itc.cn/mobile/ucenter/images/ic_home_photo_gray.png"
