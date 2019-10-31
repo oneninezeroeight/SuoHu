@@ -38,7 +38,7 @@
     </header>
     <nav data-spm="navs" class="navs-wrap" id="navMenu">
       <ul class="nav-list clearfix">
-        <a href="http://localhost:8082/nbayw" class="item" data-spm-data="1">
+        <a href="http://localhost:8080/nbayw" class="item" data-spm-data="1">
           <li class="nav">NBA</li>
         </a>
         <a

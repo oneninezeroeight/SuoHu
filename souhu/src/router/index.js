@@ -29,6 +29,21 @@ const routes = [{
   name: 'sporthome',
   component: () => import('../views/SportNews/SportNews.vue')
 },
+{
+  path: '/login',
+  name: 'sporthome',
+  component: () => import('../views/login/login.vue')
+},
+{
+  path: '/login2',
+  name: 'sporthome',
+  component: () => import('../views/login/login2.vue')
+},
+{
+  path: '/zc',
+  name: 'sporthome',
+  component: () => import('../views/login/zc.vue')
+},
 ]
 
 const router = new VueRouter({
