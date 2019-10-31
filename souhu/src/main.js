@@ -11,12 +11,12 @@ import './assets/NBAplayer.css'
 import './assets/Sport-Home-Header.css'
 import './assets/Sport-Home-League.css'
 import './assets/Sport-Home-News.css'
-// import './assets/Sport-Home-News2.css'
 import './assets/Sport-Home-News3.css'
 import './assets/Sport-Home-News4.css'
 import './assets/Sport-Home-Li.css'
 import './assets/Sport-Home-images.css'
 import './assets/Headers.css'
+import './assets/sc.css'
 Vue.config.productionTip = false
 
 new Vue({

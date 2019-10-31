@@ -3,8 +3,13 @@
     <div class="vfixed-wrap sticky">
       <div class="content origin">
         <div class="header-wrap">
-          <div data-v-90fe0322 data-spm="hdn" class="home-header">
-            <a data-v-90fe0322 href="http://localhost:8082/" data-spm-data="1">
+          <div
+            data-v-90fe0322
+            data-spm="hdn"
+            class="home-header"
+            style="background:white;border-color: white;"
+          >
+            <a data-v-90fe0322 href="http://localhost:8080/" data-spm-data="1">
               <div data-v-90fe0322 class="back bicon-left-arrow"></div>
             </a>
             <div data-v-90fe0322 class="content">

@@ -9,7 +9,7 @@
         <a
           v-for="(item,index) in news"
           :key="index"
-          href="http://m.sohu.com/z/?spm=smwp.fb-nba-home.hsb.1.1572228740174sYFhqB2"
+          :href="item.urlx"
           class="menu-link"
           data-spm-data="1"
         >

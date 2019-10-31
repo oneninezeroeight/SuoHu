@@ -45,7 +45,7 @@ export default {
   methods: {
     getNews() {
       (async () => {
-        let { news } = (await axios.get("http://localhost:3000/NBAteams")).data;
+        let { news } = (await axios.get("http://localhost:3000/CBAteams")).data;
         this.news = news;
       })();
     },
