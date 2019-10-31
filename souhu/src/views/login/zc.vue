@@ -37,7 +37,7 @@
             type="text"
             class="passport"
             placeholder="请输入账号"
-            v-model="username"
+            v-model="nbauser"
             :error-message="usertel"
           />
           <van-button
@@ -138,7 +138,7 @@ Vue.use(Divider);
 export default {
   data() {
     return {
-      username: "",
+      nbauser: "",
       msg: "",
       isFocus: 0,
       buttonmsg: "获取验证码",
@@ -149,9 +149,9 @@ export default {
   },
   computed: {
     usertel() {
-      if (this.username === "") {
+      if (this.nbauser === "") {
         return "";
-      } else if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username)) {
+      } else if (!/^[1][3,4,5,7,8][0-9]{9}$/.test(this.nbauser)) {
         return "手机号格式错误";
       } else {
         return "";
@@ -197,8 +197,8 @@ export default {
     },
     getCode() {
       if (
-        !/^[1][3,4,5,7,8][0-9]{9}$/.test(this.username) ||
-        this.username === ""
+        !/^[1][3,4,5,7,8][0-9]{9}$/.test(this.nbauser) ||
+        this.nbauser === ""
       ) {
         this.display = "block";
         this.opacity = "1";
@@ -209,7 +209,7 @@ export default {
       }
     },
     register() {
-      if (this.username === "" || this.usertel === "手机号码格式错误") {
+      if (this.nbauser === "" || this.usertel === "手机号码格式错误") {
         Toast("手机号码输入有误");
         return;
       }
@@ -218,27 +218,35 @@ export default {
         return;
       }
       this.reallR();
-      console.log("2222");
-      
+      this.login();
     },
     reallR() {
       this.zhud = true;
       this.loading = true;
-      axios
-        .get("http://localhost:3000/ZC", {
-          username: this.username,
+      axios.get("http://localhost:3000/Register", {
+        params: {
+          nbauser: this.nbauser,
           msg: this.msg
+        }
+      });
+    },
+    login() {
+      this.zhud = true;
+      this.loading = true;
+      axios
+        .get("http://localhost:3000/Register", {
+          params: {
+            nbauser: this.nbauser,
+            msg: this.msg
+          }
         })
         .then(res => {
-          var user = res.data.news[0].username;
-          var msg = res.data.news[0].msg;
-          console.log(res.data);
-          console.log(msg);
-          
-          
+          var user = res.data.data[0].nbauser;
+          var msg = res.data.data[0].msg;
+
           this.zhud = false;
           this.loading = false;
-          if (this.username != user) {
+          if (this.nbauser != user) {
             this.display = "block";
             this.opacity = "1";
             this.tip = "用户不存在";
