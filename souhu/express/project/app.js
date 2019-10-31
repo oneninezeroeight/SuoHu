@@ -27,13 +27,13 @@ var NBASy = require('./routes/NBA-index');
 var NBASc = require('./routes/NBA-sc');
 var NBAXblm = require('./routes/NBA-xb');
 var NBADblm = require('./routes/NBA-db')
-
+var Login = require('./routes/login')
+var ZC = require('./routes/zc')
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
@@ -69,7 +69,8 @@ app.use('/NBASy', NBASy);
 app.use('/NBASc', NBASc);
 app.use('/NBAXblm', NBAXblm);
 app.use('/NBADblm', NBADblm);
-
+app.use('/Login', Login);
+app.use('/ZC', ZC);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

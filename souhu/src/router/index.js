@@ -44,6 +44,21 @@ const routes = [{
   name: 'cbaph',
   component: () => import('../views/nbaph/CbaPh.vue')
 },
+{
+  path: '/login',
+  name: 'login',
+  component: () => import('../views/login/login.vue')
+},
+{
+  path: '/login2',
+  name: 'login2',
+  component: () => import('../views/login/login2.vue')
+},
+{
+  path: '/zc',
+  name: 'zc',
+  component: () => import('../views/login/zc.vue')
+},
 ]
 
 const router = new VueRouter({

@@ -39,7 +39,6 @@
             placeholder="请输入账号"
             v-model="userName"
             :error-message="usertel"
-            
           />
           <div data-v-ef68022e class="send-code" style="display: none;">获取验证码</div>
         </div>
@@ -55,7 +54,6 @@
             placeholder="请输入密码"
             v-model="password"
             :error-message="pass"
-            
           />
           <i
             data-v-ef68022e
@@ -86,7 +84,7 @@
           >手机搜狐隐私政策</a>
         </span>
       </div>
-      <van-button
+      <div
         data-v-ef68022e
         :class="['start-use',{'start-use active':isFocus}]"
         type="primary"
@@ -95,10 +93,10 @@
         :disabled="zhud"
         size="large"
         @click="login"
-      >开始使用</van-button>
+      >开始使用</div>
       <div data-v-ef68022e data-spm="method" class="switch-and-forget">
-        <div data-v-ef68022e class="switch-method">
-          <i data-v-ef68022e class="icon i-switch" @click="toRegister"></i>手机号登录注册
+        <div data-v-ef68022e class="switch-method" @click="toRegister">
+          <i data-v-ef68022e class="icon i-switch"></i>手机号登录注册
         </div>
         <a
           data-v-ef68022e
@@ -124,6 +122,13 @@
           >帮助中心</a>
         </div>
       </div>
+      <div id="toast" :style="{'opacity': opacity ,'display': display}" @click="closeTip">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+          <!-- <i class="weui-icon-success-no-circle weui-icon_toast"></i> -->
+          <p class="weui-toast__content">{{tip}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -143,28 +148,34 @@ export default {
       password: "",
       loading: false,
       ischange: 0,
-      type:"password",
-      zhud:false,
+      type: "password",
+      zhud: false,
+      tip: "",
+      opacity: "0",
+      display: "none"
     };
   },
   methods: {
     changeeye() {
       this.ischange = !this.ischange;
-      if(this.type==="password"){
-          this.type="text"
-      }else if(this.type==="text"){
-          this.type="password"
+      if (this.type === "password") {
+        this.type = "text";
+      } else if (this.type === "text") {
+        this.type = "password";
       }
     },
     changecheck() {
       this.isFocus = !this.isFocus;
-
     },
     toRegister() {
-      this.$router.replace("");
+      this.$router.replace("/zc");
+    },
+    closeTip() {
+      this.display = "none";
+      this.opacity = "0";
     },
     login() {
-      if (this.tel === "" || this.usertel === "手机号码格式错误") {
+      if (this.userName === "" || this.usertel === "手机号码格式错误") {
         Toast("手机号码输入有误");
         return;
       }
@@ -172,33 +183,46 @@ export default {
         Toast("密码输入有误");
         return;
       }
-      //   if (this.sms === "" || this.sms !== this.adminCode) {
-      //     Toast("验证码输入有误");
-      //     return;
-      //   }
       this.reallR();
     },
     reallR() {
       this.loading = true;
-      this.zhud=true
+      this.zhud = true;
       axios
-        .post("", {
-          username: this.tel,
+        .get("http://localhost:3000/Login", {
+          username: this.userName,
           password: this.password
         })
         .then(res => {
+          var user = res.data.news[0].userName;
+          var pass = res.data.news[0].password;
           this.zhud = false;
           this.loading = false;
-          if (res.data === 2) {
-            Toast("用户未注册");
-          } else if (res.data === -1) {
-            Toast("密码错误");
-          } else if (res.data === 0) {
-            Toast("登录失败");
-          } else {
-            Toast("登录成功");
-            localStorage.setItem("isLogin", "ok"); //登录标识
-            // this.$router.back()  //登陆成功返回上一页
+          if (res.status == 200) {
+            // this.tip="链接成功";
+            if (this.userName != user) {
+              this.display = "block";
+              this.opacity = "1";
+              this.tip = "用户未注册";
+            } else {
+              if (this.password != pass) {
+                this.display = "block";
+                this.opacity = "1";
+                this.tip = "密码错误";
+              } else {
+                if (this.isFocus == 0) {
+                  this.display = "block";
+                  this.opacity = "1";
+                  this.tip = "请勾选协议";
+                } else {
+                  this.display = "block";
+                  this.opacity = "1";
+                  this.tip = "登录成功";
+                  localStorage.setItem("isLogin", "ok"); //登录标识
+                  this.$router.back("/"); //登陆成功返回上一页
+                }
+              }
+            }
           }
         });
     }
@@ -274,8 +298,8 @@ html {
   font-size: 0.266667rem;
   color: red;
 }
-.i-view{
-    height: 1.0368rem;
-    width: .228133rem;
+.i-view {
+  height: 1.0368rem;
+  width: 0.228133rem;
 }
 </style>
