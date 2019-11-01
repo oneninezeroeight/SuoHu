@@ -2,10 +2,12 @@
   <swiper :options="swiperOption" ref="mySwiper">
     <swiper-slide>
       <div>
-        <img
-          src="//29e5534ea20a8.cdn.sohucs.com/q_70,c_lfill,w_698,h_349,g_faces/os/news/bdc6f8aeb1492c3d6ee61b7d0f8e62cb.jpeg"
-        />
-        <p>辽宁男篮出征揭幕战 球迷送行史蒂芬森霸气</p>
+        <a href="http://localhost:8080/detailsimages">
+          <img
+            src="//5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_750/images/20191031/4790b05b9aee45cca32b21aeaa4de3ca.jpeg"
+          />
+          <p>鲁能备战申花 王大雷伤愈训练振臂高呼</p>
+        </a>
       </div>
     </swiper-slide>
     <swiper-slide>
