@@ -19,6 +19,7 @@ var SportHomeNews = require('./routes/Sport-Home-News')
 var CBAteams = require('./routes/CBA-teams')
 var CBAsc = require('./routes/CBA-sc')
 var CBAteamsscore = require('./routes/CBA-teams-score')
+var DetailsImages = require('./routes/DetailsImages')
 
 
 var SportLeague = require('./routes/Sport-League');
@@ -63,7 +64,7 @@ app.use('/SportHomeNews', SportHomeNews);
 app.use('/CBAteams', CBAteams);
 app.use('/CBAsc', CBAsc);
 app.use('/CBAteamsscore', CBAteamsscore);
-
+app.use('/DetailsImages', DetailsImages);
 
 
 app.use('/NBASy', NBASy);
