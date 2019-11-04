@@ -1,11 +1,7 @@
 <template>
   <div class="gallery-wrapper" style="background-color:black;height:667px">
     <header data-spm="header" class="gallery-header">
-      <a
-        href="https://m.sohu.com/picture?spm=smwp.pic-land.header.1.1572523458933wWiPtXT"
-        class="back-wrap"
-        data-spm-data="1"
-      >
+      <a href="http://localhost:8080/" class="back-wrap" data-spm-data="1">
         <i class="glyph glyph-rectangle"></i>
         <img
           src="//statics.itc.cn/mobile/gallery/css/images/logo-gallery-349f20e6.png"
@@ -15,49 +11,95 @@
       <footer class="oper-area"></footer>
     </header>
     <div class="details">
-      <DetailsImages />
+      <swiper :options="swiperOption" ref="mySwiper">
+        <swiper-slide v-for="(item,index) in news" :key="index">
+          <div @click="click">
+            <img :src="item.images" />
+            <footer class="footer" style="margin-top:50px;height:70px">
+              <div
+                data-v-6d7c78dc
+                class="legend-container"
+                data-expand="0"
+                style="height: 44px;margin-left:20px"
+              >
+                <div data-v-6d7c78dc class="legend" style="top: 0px;color:white;font-size:20px;">
+                  <h2 data-v-6d7c78dc class="legend-title">
+                    <span data-v-6d7c78dc class="count-wrapper" style="margin-right:10px">
+                      <em data-v-6d7c78dc class="current-count" v-text="item._id"></em>
+                      <span data-v-6d7c78dc>/</span>
+                      <span
+                        data-v-6d7c78dc
+                        class="total-count"
+                        style="margin-left:2px"
+                      >{{news.length}}</span>
+                    </span>
+                    <span
+                      data-v-6d7c78dc
+                      class="legend-title-text"
+                      style="line-height:1.5;display:inline"
+                    ></span>
+                  </h2>
+                  <p
+                    data-v-6d7c78dc
+                    class="legend-content"
+                    v-text="item.innertext"
+                    style="color:white;font-size:16px;margin-top:175px;"
+                  ></p>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </swiper-slide>
+      </swiper>
     </div>
-    <footer class="footer">
-      <div
-        data-v-6d7c78dc
-        class="legend-container"
-        data-expand="0"
-        style="height: 44px;margin-left:20px"
-      >
-        <div data-v-6d7c78dc class="legend" style="top: 0px;">
-          <h2 data-v-6d7c78dc class="legend-title">
-            <span data-v-6d7c78dc class="count-wrapper" style="margin-right:10px">
-              <em data-v-6d7c78dc class="current-count">1</em>
-              <span data-v-6d7c78dc>/</span>
-              <span data-v-6d7c78dc class="total-count">8</span>
-            </span>
-            <span
-              data-v-6d7c78dc
-              class="legend-title-text"
-              style="line-height:1.5;display:inline"
-            >高清图：鲁能备战申花 王大雷伤愈训练振臂高呼</span>
-            <!---->
-          </h2>
-          <p data-v-6d7c78dc class="legend-content">北京时间10月31日消息，山东鲁能全队在基地备战与上海申花的足协杯决赛首回合比赛。</p>
-        </div>
-        <div data-v-6d7c78dc class="legend-scroller" style="display: none; top: 0px;"></div>
-      </div>
-    </footer>
   </div>
 </template>
 <script>
 // import "../../assets/detailsimages.css";
 // import axios from "axios";
-import DetailsImages from "../Slide/imagesdetails.vue";
+// import DetailsImages from "../Slide/imagesdetails.vue";
+import "../../../node_modules/swiper/dist/css/swiper.css";
+import axios from "axios";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
+import $ from "jquery";
 export default {
   components: {
-    DetailsImages
+    swiper,
+    swiperSlide
   },
   data() {
     return {
       num: "",
-      new: []
+      news: [],
+      swiperOption: {
+        pagination: ".swiper-pagination1",
+        centeredSlides: false,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        loop: true
+      }
     };
+  },
+  methods: {
+    click() {
+      $(".swiper-slide").click(function() {
+        console.log($(this).index());
+      });
+    },
+    getNews() {
+      (async () => {
+        let { news } = (await axios.get(
+          "http://localhost:3000/DetailsImages"
+        )).data;
+        this.news = news;
+      })();
+    }
+  },
+  computed: {},
+  mounted() {
+    this.getNews();
   }
 };
 </script>
@@ -82,10 +124,38 @@ html {
   position: absolute;
   top: 150px;
 }
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.legend-content {
+  position: absolute;
+  z-index: 2;
+  font-size: 18px;
+  color: white;
+  top: 160px;
+  left: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  bottom: 0.373333rem;
+  font-size: 0.48rem;
+  font-weight: 500;
+  padding: 0 0.426667rem;
+  line-height: 1.32em;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  display: box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+}
+
 .footer {
   width: 100%;
-  height: 45px;
-  position: absolute;
+  height: 70px;
+  /* position: absolute; */
   top: 500px;
   font-family: PingFang SC, Arial, \\5fae\8f6f\96c5\9ed1, \\5b8b\4f53, simsun,
     sans-serif;

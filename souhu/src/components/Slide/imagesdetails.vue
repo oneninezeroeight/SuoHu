@@ -3,9 +3,37 @@
     <swiper-slide v-for="(item,index) in news" :key="index">
       <div @click="click">
         <img :src="item.images" />
+        <footer class="footer" style="margin-top:50px;height:70px">
+          <div
+            data-v-6d7c78dc
+            class="legend-container"
+            data-expand="0"
+            style="height: 44px;margin-left:20px"
+          >
+            <div data-v-6d7c78dc class="legend" style="top: 0px;color:white;font-size:20px;">
+              <h2 data-v-6d7c78dc class="legend-title">
+                <span data-v-6d7c78dc class="count-wrapper" style="margin-right:10px">
+                  <em data-v-6d7c78dc class="current-count" v-text="item._id"></em>
+                  <span data-v-6d7c78dc>/</span>
+                  <span data-v-6d7c78dc class="total-count" style="margin-left:13px">{{news.length}}</span>
+                </span>
+                <span
+                  data-v-6d7c78dc
+                  class="legend-title-text"
+                  style="line-height:1.5;display:inline"
+                ></span>
+              </h2>
+              <p
+                data-v-6d7c78dc
+                class="legend-content"
+                v-text="item.innertext"
+                style="color:white;font-size:16px;margin-top:175px;"
+              ></p>
+            </div>
+          </div>
+        </footer>
       </div>
     </swiper-slide>
-    <div class="swiper-pagination" slot="pagination"></div>
   </swiper>
 </template>
 
@@ -64,9 +92,9 @@ span {
 img {
   width: 100%;
   height: 100%;
-  /* position: absolute; */
 }
-p {
+
+.legend-content {
   position: absolute;
   z-index: 2;
   font-size: 18px;
